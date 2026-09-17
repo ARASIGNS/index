@@ -662,7 +662,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Agora a capa tem um vídeo independente e a seção “Por trás da produção” tem 5 espaços. Você pode trocar os arquivos, títulos e identificações. Tudo é salvo no Firebase e atualizado nos outros dispositivos.</p><div class="admin-video-hero" id="adminHeroVideo"></div><div class="admin-video-grid" id="adminVideoGrid"></div>
 <h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
-      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas para todos os dispositivos. O e-mail/senha do administrador são validados pelo Firebase Authentication.</p>
+      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. O acesso do ADM continua usando o login definido neste HTML.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
     </div>
   </div>
@@ -880,7 +880,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   const SERVICE_DB="arasigns_service_gallery_db_v1", SERVICE_STORE="galleries";
   function openServiceDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(SERVICE_DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(SERVICE_STORE))r.result.createObjectStore(SERVICE_STORE);};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
   async function loadServiceGalleries(){try{const db=await openServiceDB();serviceGalleries={};for(const s of serviceAdminDefaults){const tx=db.transaction(SERVICE_STORE,"readonly"),req=tx.objectStore(SERVICE_STORE).get(s.key);const val=await new Promise((res,rej)=>{req.onsuccess=()=>res(req.result||[]);req.onerror=()=>rej(req.error);});serviceGalleries[s.key]=val;}db.close();}catch(e){try{serviceGalleries=JSON.parse(localStorage.getItem("arasigns_service_galleries_v38")||"{}");}catch(_){serviceGalleries={};}}}
-  async function saveServiceGallery(key){try{const db=await openServiceDB();await new Promise((resolve,reject)=>{const tx=db.transaction(SERVICE_STORE,"readwrite");tx.objectStore(SERVICE_STORE).put(serviceGalleries[key]||[],key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();return true;}catch(e){try{localStorage.setItem("arasigns_service_galleries_v38",JSON.stringify(serviceGalleries));return true;}catch(_){return false;}}}
+  async function saveServiceGallery(key){try{const db=await openServiceDB();await new Promise((resolve,reject)=>{const tx=db.transaction(SERVICE_STORE,"readwrite");tx.objectStore(SERVICE_STORE).put(serviceGalleries[key]||[],key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();window.firebaseSaveSiteState?.();return true;}catch(e){try{localStorage.setItem("arasigns_service_galleries_v38",JSON.stringify(serviceGalleries));window.firebaseSaveSiteState?.();return true;}catch(_){return false;}}}
   function resizeImageFile(file,cb){
     if(!file)return; const r=new FileReader(); r.onload=e=>{const img=new Image(); img.onload=()=>{const max=1400;let w=img.naturalWidth,h=img.naturalHeight; if(Math.max(w,h)>max){const k=max/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k);} const c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);cb(c.toDataURL("image/jpeg",.82));};img.src=e.target.result;}; r.readAsDataURL(file);
   }
@@ -953,6 +953,34 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     renderAdminServices();
     renderAdminVideos();
   }
+  /* ===== PONTE FIREBASE REALTIME DATABASE ===== */
+  window.arasignsGetState=function(){
+    return {
+      prices: JSON.parse(JSON.stringify(prices)),
+      siteImages: JSON.parse(JSON.stringify(siteImages)),
+      team: JSON.parse(JSON.stringify(teamData)),
+      serviceGalleries: JSON.parse(JSON.stringify(serviceGalleries)),
+      videos: JSON.parse(JSON.stringify(videoData||defaultVideos)),
+      heroVideo: JSON.parse(JSON.stringify(heroVideoData||{}))
+    };
+  };
+  window.arasignsApplyState=function(remote){
+    try{
+      if(remote.prices && typeof remote.prices==="object") prices={...prices,...remote.prices};
+      if(remote.siteImages && typeof remote.siteImages==="object") siteImages={...siteImages,...remote.siteImages};
+      if(Array.isArray(remote.team) && remote.team.length) teamData=remote.team;
+      if(remote.serviceGalleries && typeof remote.serviceGalleries==="object") serviceGalleries=remote.serviceGalleries;
+      if(Array.isArray(remote.videos)) videoData=defaultVideos.map(def=>remote.videos.find(v=>Number(v.slot)===def.slot)||def);
+      if(remote.heroVideo && typeof remote.heroVideo==="object") heroVideoData={...heroVideoData,...remote.heroVideo};
+      localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));
+      localStorage.setItem("arasigns_site_images_v22",JSON.stringify(siteImages));
+      localStorage.setItem("arasigns_team_v30",JSON.stringify(teamData));
+      localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
+      localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));
+      applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); calc(); applyVideoData();
+      if(document.getElementById("adminRows")) renderAdminRows();
+    }catch(e){console.error("Erro ao aplicar dados do Firebase:",e);}
+  };
   document.getElementById("adminOpen")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("openAdmin")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("adminClose")?.addEventListener("click",()=>adminOverlay.classList.remove("open"));
@@ -968,7 +996,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
     localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderAdminImages();calc();const videoOk=await saveAdminVideos();if(videoOk)alert("Alterações salvas e sincronizadas. ✓");
+    applySiteImages();renderTeam();renderAdminImages();calc();const videoOk=await saveAdminVideos();if(videoOk){await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");}
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
