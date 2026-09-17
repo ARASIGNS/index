@@ -32,7 +32,7 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.055em}h1{font-s
 .video-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:14px}
 .video-tile{position:relative;border-radius:26px;overflow:hidden;background:#17181b;min-height:500px;border:1px solid var(--line)}
 .video-tile.tall{min-height:500px}
-.video-tile video{width:100%;height:100%;min-height:500px;object-fit:cover;display:block}
+.video-tile video{width:100%;height:100%;min-height:500px;object-fit:cover;object-position:center;display:block;background:#111216}
 .video-tile.tall video{object-position:center}
 .video-caption{position:absolute;left:20px;right:20px;bottom:20px;padding:15px 17px;border-radius:16px;background:rgba(17,18,22,.82);color:#fff;backdrop-filter:blur(14px);display:flex;justify-content:space-between;align-items:center}
 .video-caption small{font-size:9px;letter-spacing:2px;color:#b8bbc0;display:block;margin-bottom:4px}
@@ -138,7 +138,7 @@ body.modal-open{overflow:hidden}
 
 /* === V10: vídeos preservando enquadramento original === */
 .video-tile{background:#111216;position:relative}
-.video-tile video{background:#111216;object-fit:contain;object-position:center;width:100%;height:100%;min-height:0}
+.video-tile video{background:#111216;object-fit:cover;object-position:center;width:100%;height:100%;min-height:0}
 .video-tile.tall video{object-fit:contain;object-position:center}
 .video-column .video-tile{min-height:500px;height:500px}
 .video-tile:first-child video{object-fit:cover;object-position:center}
@@ -241,6 +241,16 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 .instagram-final-btn .ig-icon:before{content:"";width:6px;height:6px;border:2px solid #fff;border-radius:50%}
 .instagram-final-btn .ig-icon:after{content:"";position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;right:2px;top:2px}
 @media(max-width:700px){.instagram-final-btn{margin-left:0;margin-top:14px}.footer-top a.instagram-final-btn{display:inline-flex}}
+
+/* V43 — vídeo real + enquadramento consistente */
+.video-showcase .video-column .video-tile video{object-fit:cover;object-position:center center}
+.video-showcase .video-tile.tall video{object-fit:cover;object-position:center center}
+.video-showcase .video-tile{background:#111216}
+.video-showcase .video-caption{z-index:3}
+
+.admin-video-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}.admin-video-card{border:1px solid #e7e7e7;border-radius:14px;padding:12px;background:#fafafa}.admin-video-card strong{display:block;font-size:10px;margin-bottom:7px}.admin-video-preview{height:130px;border-radius:10px;overflow:hidden;background:#111216;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:8px}.admin-video-preview video{width:100%;height:100%;object-fit:cover}.admin-video-card input[type=text]{width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:8px;padding:8px;margin-bottom:7px;font-size:9px}.admin-video-card input[type=file]{width:100%;font-size:9px}.admin-video-status{font-size:8px;color:#27894c;margin-top:7px;min-height:12px}.admin-video-help{font-size:8px;color:#777;line-height:1.45;margin-top:8px}
+@media(max-width:900px){.admin-video-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.admin-video-grid{grid-template-columns:1fr}}
 </style>
 </style>
 <style id="team-title-v36">
@@ -249,8 +259,8 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 </head><body><div class="noise"></div>
 <header class="header" id="header"><a href="#inicio"><img class="logo" src="./image-01.png" alt="Arasigns"></a><nav class="nav" id="nav"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#videos">Vídeos</a><a href="#orcamento-express">Orçamento Express</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button class="menu" id="menu" aria-label="Menu"><span></span><span></span></button></header>
 <main>
-<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
-      <source src="./vídeo-01.mp4" type="video/mp4">
+<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="1" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
+      <source src="./video-01.mp4" type="video/mp4">
     </video><div class="floating-dot"></div><div class="hero-label"><small>PROJETO EM DESTAQUE</small><strong>Vai com Arasigns que é Mara!</strong></div></div></section>
 <section class="marquee"><div class="track"><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i><span>ADESIVOS</span><i>✦</i><span>VEÍCULOS</span><i>✦</i><span>ACM</span><i>✦</i><span>BANNERS</span><i>✦</i><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i></div></section>
 
@@ -265,8 +275,8 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 
   <div class="video-grid">
     <article class="video-tile tall">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="./vídeo-02.mp4" type="video/mp4">
+      <video data-video-slot="1" autoplay muted loop playsinline preload="auto">
+        <source src="./video-01.mp4" type="video/mp4">
       </video>
       <div class="video-caption">
         <div><small>01 / PRODUÇÃO</small><strong>Estrutura Arasigns</strong></div>
@@ -276,8 +286,8 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 
     <div class="video-column">
       <article class="video-tile">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="./vídeo-03.mp4" type="video/mp4">
+        <video data-video-slot="2" autoplay muted loop playsinline preload="auto">
+          <source src="./video-02.mp4" type="video/mp4">
         </video>
         <div class="video-caption">
           <div><small>02 / PROCESSO</small><strong>Nosso trabalho</strong></div>
@@ -286,8 +296,8 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
       </article>
 
       <article class="video-tile">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="./vídeo-04.mp4" type="video/mp4">
+        <video data-video-slot="3" autoplay muted loop playsinline preload="auto">
+          <source src="./video-03.mp4" type="video/mp4">
         </video>
         <div class="video-caption">
           <div><small>03 / DETALHES</small><strong>Feito para aparecer</strong></div>
@@ -548,7 +558,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     <div class="admin-login" id="adminLogin">
       <h3>Acesso administrativo</h3>
       <p>Área reservada para ajustar preços e regras do Orçamento Express.</p>
-      <input id="adminUser" autocomplete="username" placeholder="Login">
+      <input id="adminUser" autocomplete="username" placeholder="E-mail do administrador">
       <input id="adminPass" type="password" autocomplete="current-password" placeholder="Senha">
       <div class="admin-error" id="adminError"></div>
       <div class="admin-actions">
@@ -564,9 +574,10 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Troque os vídeos que aparecem na capa e na seção “Por trás da produção”. Você pode alterar o arquivo, o título e a descrição de cada vídeo. O arquivo enviado vai para o Firebase Storage e a mudança aparece para todos os dispositivos.</p><div class="admin-video-grid" id="adminVideoGrid"></div>
+<h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
-      <p class="admin-note">Observação: nesta versão os dados ficam salvos no navegador deste computador (localStorage). Para segurança real e edição compartilhada por vários computadores, será necessário um backend/banco de dados.</p>
+      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas para todos os dispositivos. O e-mail/senha do administrador são validados pelo Firebase Authentication.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
     </div>
   </div>
@@ -586,6 +597,14 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     outro:{label:"Outro projeto",rate:0,min:0}
   };
   let prices=JSON.parse(localStorage.getItem("arasigns_prices_v9")||"null")||defaultPrices;
+  const defaultVideos=[
+    {slot:1,src:"./video-01.mp4",eyebrow:"01 / PRODUÇÃO",title:"Estrutura Arasigns"},
+    {slot:2,src:"./video-02.mp4",eyebrow:"02 / PROCESSO",title:"Nosso trabalho"},
+    {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"}
+  ];
+  let videoData=JSON.parse(localStorage.getItem("arasigns_videos_v1")||"null")||defaultVideos;
+  window.arasignsVideoData=videoData;
+  window.pendingAdminVideos=window.pendingAdminVideos||{};
   let qProduct=null,qLat=null,qLng=null,qImageName="",qImageData="",qApplied=false;
 
   const steps=[...document.querySelectorAll(".quote-step")];
@@ -794,33 +813,82 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     bindTeamFileInputs();
   }
   function fileToData(file,cb){if(!file)return;const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsDataURL(file);}
+  function applyVideoData(){
+    (videoData||defaultVideos).forEach(v=>{
+      document.querySelectorAll(`[data-video-slot="${v.slot}"]`).forEach(el=>{
+        const src=v.src||defaultVideos.find(x=>x.slot===v.slot)?.src;
+        if(!src)return;
+        let source=el.querySelector("source");
+        if(!source){source=document.createElement("source");el.appendChild(source);}
+        if(source.getAttribute("src")!==src){source.src=src;el.load();}
+        el.muted=true;el.playsInline=true;
+        el.play().catch(()=>{});
+      });
+      document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{
+        const sm=el.querySelector("small"),st=el.querySelector("strong");
+        if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;
+        if(st)st.textContent=v.title||"Vídeo Arasigns";
+      });
+    });
+  }
+  function renderAdminVideos(){
+    const wrap=document.getElementById("adminVideoGrid");if(!wrap)return;
+    wrap.innerHTML=(videoData||defaultVideos).map(v=>`<div class="admin-video-card"><strong>VÍDEO 0${v.slot}</strong><div class="admin-video-preview" id="adminVideoPreview${v.slot}"><video muted playsinline preload="metadata" src="${v.src||""}"></video></div><input type="text" id="videoEyebrow${v.slot}" value="${(v.eyebrow||"").replace(/"/g,'&quot;')}" placeholder="Ex.: 01 / PRODUÇÃO"><input type="text" id="videoTitle${v.slot}" value="${(v.title||"").replace(/"/g,'&quot;')}" placeholder="Título do vídeo"><input type="file" id="videoFile${v.slot}" accept="video/mp4,video/webm,video/quicktime"><div class="admin-video-status" id="videoStatus${v.slot}"></div><div class="admin-video-help">Recomendado: MP4 H.264. O upload fica salvo na nuvem.</div></div>`).join("");
+    wrap.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const slot=+input.id.replace('videoFile','');window.pendingAdminVideos[slot]=f;const prev=document.querySelector(`#adminVideoPreview${slot} video`);if(prev){prev.src=URL.createObjectURL(f);prev.load();}const st=document.getElementById(`videoStatus${slot}`);if(st)st.textContent=`Novo arquivo selecionado: ${f.name}`;}));
+  }
+  async function saveAdminVideos(){
+    const next=(videoData||defaultVideos).map(v=>({...v,eyebrow:document.getElementById(`videoEyebrow${v.slot}`)?.value.trim()||v.eyebrow,title:document.getElementById(`videoTitle${v.slot}`)?.value.trim()||v.title}));
+    const files=window.pendingAdminVideos||{};
+    if(window.firebaseSaveVideos){
+      const ok=await window.firebaseSaveVideos(next,files);
+      if(!ok)return false;
+    }else{
+      Object.entries(files).forEach(([slot,file])=>{
+        // Sem Firebase, apenas preview local; não tenta guardar vídeos grandes no localStorage.
+        const item=next.find(v=>v.slot==slot); if(item)item.src=URL.createObjectURL(file);
+      });
+    }
+    videoData=next;
+    window.arasignsVideoData=videoData;
+    localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
+    window.applyFirebaseVideos?.(videoData);
+    window.pendingAdminVideos={};
+    renderAdminVideos();
+    return true;
+  }
+  window.applyFirebaseVideos=(remoteVideos)=>{
+    if(!Array.isArray(remoteVideos))return;
+    videoData=remoteVideos;window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));applyVideoData();
+    if(document.getElementById("adminVideoGrid"))renderAdminVideos();
+  };
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
     Object.entries(prices).forEach(([key,p])=>{if(key==="outro"||key==="fachada")return;const tr=document.createElement("tr");tr.innerHTML=`<td>${p.label}</td><td><input type="number" step="0.01" data-rate="${key}" value="${p.rate}"></td><td><input type="number" step="0.01" data-min="${key}" value="${p.min}"></td>`;body.appendChild(tr);});
     renderAdminImages();
     renderAdminServices();
+    renderAdminVideos();
   }
   document.getElementById("adminOpen")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("openAdmin")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("adminClose")?.addEventListener("click",()=>adminOverlay.classList.remove("open"));
-  document.getElementById("adminEnter")?.addEventListener("click",()=>{const u=document.getElementById("adminUser").value,p=document.getElementById("adminPass").value,err=document.getElementById("adminError");if(u==="D"&&p==="D"){err.textContent="";adminLogin.style.display="none";adminPanel.classList.add("open");renderAdminRows();}else err.textContent="Login ou senha incorretos.";});
+  document.getElementById("adminEnter")?.addEventListener("click",async()=>{const u=document.getElementById("adminUser").value.trim(),p=document.getElementById("adminPass").value,err=document.getElementById("adminError");if(window.firebaseAdminLogin){err.textContent="Entrando…";const ok=await window.firebaseAdminLogin(u,p);if(ok){err.textContent="";adminLogin.style.display="none";adminPanel.classList.add("open");renderAdminRows();}else err.textContent="E-mail ou senha do Firebase incorretos.";}else if(u==="D"&&p==="D"){err.textContent="";adminLogin.style.display="none";adminPanel.classList.add("open");renderAdminRows();}else err.textContent="Firebase ainda não configurado. Use o acesso local temporário ou configure o Firebase.";});
   document.getElementById('fileSiteFacade')?.addEventListener('change',e=>fileToData(e.target.files[0],data=>{siteImages.facade=data;renderAdminImages();}));
   document.getElementById('fileSiteLogo')?.addEventListener('change',e=>fileToData(e.target.files[0],data=>{siteImages.logo=data;renderAdminImages();}));
   function bindTeamFileInputs(){
     teamData.forEach((m,i)=>document.getElementById(`teamFile${i}`)?.addEventListener('change',e=>fileToData(e.target.files[0],data=>{teamData[i].image=data;renderAdminImages();})));
   }
-  document.getElementById("adminSave")?.addEventListener("click",()=>{
+  document.getElementById("adminSave")?.addEventListener("click",async()=>{
     document.querySelectorAll("[data-rate]").forEach(i=>{prices[i.dataset.rate].rate=parseFloat(i.value)||0;});
     document.querySelectorAll("[data-min]").forEach(i=>{prices[i.dataset.min].min=parseFloat(i.value)||0;});
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
     localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderAdminImages();calc();alert("Alterações salvas neste navegador.");
+    applySiteImages();renderTeam();renderAdminImages();calc();const videoOk=await saveAdminVideos();if(videoOk)alert("Alterações salvas e sincronizadas. ✓");
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
   adminOverlay?.addEventListener("click",e=>{if(e.target===adminOverlay)adminOverlay.classList.remove("open");});
-  applySiteImages();renderTeam();
+  applySiteImages();renderTeam();applyVideoData();
   loadServiceGalleries().then(()=>{renderAdminServices();});
 })();
 </script>
@@ -879,3 +947,4 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
 })();
 </script>
 </body></html>
+<script type="module" src="./firebase-sync.js"></script>
