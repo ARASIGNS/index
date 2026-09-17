@@ -255,12 +255,114 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 </style>
 <style id="team-title-v36">
 .team-realce{color:var(--orange)!important;}
+
+/* V46 — vídeo da capa separado + 5 slots na seção */
+.video-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:14px}
+.video-column{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.video-column .video-tile{min-height:0;height:500px}
+.video-tile.tall{min-height:0;height:500px}
+.video-tile video{min-height:0;height:100%;object-fit:cover}
+.video-tile.empty-video{display:flex;align-items:center;justify-content:center;background:#191a1e}
+.video-placeholder{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#999;text-align:center;padding:20px}
+.video-grid-more{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.video-grid-more .video-tile{height:320px;min-height:0}
+.admin-video-grid{grid-template-columns:repeat(3,1fr)}
+.admin-video-hero{border:1px solid #e7e7e7;border-radius:14px;padding:12px;background:#fafafa;margin:10px 0}
+@media(max-width:900px){.video-grid{grid-template-columns:1fr}.video-column{grid-template-columns:1fr 1fr}.video-grid-more{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.video-column,.video-grid-more{grid-template-columns:1fr}.video-tile.tall,.video-column .video-tile,.video-grid-more .video-tile{height:430px}}
+</style>
+<style>
+/* V47 — marca d'água Arasigns no fundo */
+body::before{content:"";position:fixed;top:70px;left:-95px;width:420px;height:420px;background:url("./arasigns-mark-bg.png") center/contain no-repeat;opacity:.15;transform:rotate(-12deg);pointer-events:none;z-index:0;}
+body>*{position:relative;z-index:1;}
+body>.noise{z-index:2;pointer-events:none;}
+@media(max-width:900px){body::before{width:290px;height:290px;top:85px;left:-90px;opacity:.11;}}
+</style>
+
+<style id="arasigns-v48-premium">
+/* V48 — PREMIUM POLISH */
+:root{--ease-premium:cubic-bezier(.2,.75,.2,1)}
+body{background:#fbfbf9}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(115deg,transparent 0 42%,rgba(255,104,23,.018) 52%,transparent 66%)}
+.header{height:88px;padding:0 5.5vw}
+.header.scrolled{background:rgba(251,251,249,.82);backdrop-filter:blur(22px) saturate(1.1);box-shadow:0 12px 40px rgba(17,18,22,.055)}
+.logo{width:190px;transition:transform .35s var(--ease-premium)}
+.logo:hover{transform:scale(1.025)}
+.nav{gap:34px;font-size:11px;letter-spacing:.15px}
+.nav a{position:relative;padding:8px 0}
+.nav a:after{content:"";position:absolute;left:0;right:100%;bottom:1px;height:1.5px;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow));transition:right .35s var(--ease-premium)}
+.nav a:hover:after{right:0}
+.top-btn{padding:14px 20px;box-shadow:0 8px 25px rgba(17,18,22,.08)}
+.hero{padding-top:135px;gap:70px}
+.hero-copy{max-width:670px}
+.hero-copy h1{font-size:clamp(66px,7.4vw,118px);line-height:.79}
+.hero-copy>p:not(.eyebrow){font-size:15px;max-width:490px;margin:34px 0 27px}
+.hero-art{min-height:690px}
+.hero-photo{height:690px;border-radius:40px;box-shadow:0 45px 110px rgba(20,20,20,.15);transition:transform 1s var(--ease-premium),box-shadow .6s ease}
+.hero-art:hover .hero-photo{transform:scale(1.012);box-shadow:0 52px 125px rgba(20,20,20,.17)}
+.floating-dot{width:76px;height:76px;right:-25px;top:9%;animation:floatMark 5s ease-in-out infinite}
+@keyframes floatMark{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(7deg)}}
+.hero-label{right:26px;bottom:26px;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 45px rgba(0,0,0,.18)}
+.hero-stats{gap:40px;margin-top:50px}
+.stat strong{font-size:29px}.stat span{letter-spacing:.2px}
+.marquee{background:#fff;padding:23px 0}.track{font-size:12px;letter-spacing:2.5px}
+.section{padding:145px 5vw}
+.section-head{margin-bottom:65px}.section-head h2{font-size:clamp(48px,5.6vw,78px)}
+.eyebrow{letter-spacing:3.8px}
+/* Serviços: menos cara de card, mais editorial */
+.service-grid{gap:0;border-top:1px solid var(--line)}
+.service{min-height:300px;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:30px 28px 34px 0;background:transparent;transition:transform .45s var(--ease-premium),padding .45s var(--ease-premium),background .35s ease}
+.service:nth-child(3n+2),.service:nth-child(3n+3){padding-left:28px;border-left:1px solid var(--line)}
+.service:hover{transform:none;padding-left:10px;background:rgba(255,255,255,.58);box-shadow:none}
+.service:nth-child(3n+2):hover,.service:nth-child(3n+3):hover{padding-left:38px}
+.service-num{font-size:10px;letter-spacing:2.5px;color:#989ca2}.service-icon{margin:56px 0 17px;font-size:24px;color:var(--orange);transition:transform .45s var(--ease-premium)}
+.service:hover .service-icon{transform:translate(5px,-5px)}
+.service h3{font-size:27px}.service p{font-size:12px;max-width:310px}
+.service[data-service]:after{right:24px;bottom:28px;opacity:0;transform:translateX(-8px);transition:.35s var(--ease-premium)}
+.service[data-service]:hover:after{opacity:1;transform:none}
+/* Vídeos: composição mais cinematográfica */
+.video-showcase{background:#efefec;padding-top:150px;padding-bottom:155px}
+.video-showcase:after{content:"PRODUÇÃO";position:absolute;left:-40px;bottom:80px;font:700 12vw/1 "Space Grotesk";letter-spacing:-.08em;color:rgba(17,18,22,.025);pointer-events:none;white-space:nowrap}
+.video-grid{grid-template-columns:1.55fr .75fr;gap:16px}
+.video-tile{border-radius:30px;min-height:0;height:530px;border:1px solid rgba(17,18,22,.10);box-shadow:0 22px 55px rgba(17,18,22,.08);transition:transform .65s var(--ease-premium),box-shadow .65s ease}
+.video-tile.tall{min-height:0;height:530px}
+.video-tile video{min-height:0;height:100%;transition:transform 1s var(--ease-premium);object-fit:cover}
+.video-tile:hover{transform:translateY(-5px);box-shadow:0 32px 75px rgba(17,18,22,.13)}
+.video-tile:hover video{transform:scale(1.035)}
+.video-column{grid-template-columns:1fr;gap:16px}
+.video-column .video-tile{height:257px;min-height:0}
+.video-grid-more{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.video-grid-more .video-tile{height:300px;min-height:0}
+.video-caption{left:18px;right:18px;bottom:18px;border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 30px rgba(0,0,0,.15);padding:14px 16px}
+.video-caption strong{font-size:17px}.video-note{font-size:9px;letter-spacing:.8px;margin-top:20px}
+/* Sobre */
+.about{gap:120px}.about-card{height:600px;border-radius:36px;box-shadow:0 30px 80px rgba(17,18,22,.08)}
+.about-card:before{width:450px;height:450px;opacity:.82}.about-card:after{font-size:280px}
+.about-facade{filter:saturate(.92);transition:transform 1s var(--ease-premium),filter .6s ease}.about-card:hover .about-facade{transform:scale(1.025);filter:saturate(1.05)}
+.about h2{font-size:clamp(48px,5.3vw,76px)}
+.point{padding:19px 0}.point b{font-size:10px}
+/* Equipe */
+.team-section{background:#f4f4f1}.team-grid{gap:38px;margin-top:45px}.team-card{transition:transform .5s var(--ease-premium)}
+.team-photo{width:190px;height:190px;border:4px solid #fff;box-shadow:0 18px 45px rgba(0,0,0,.11);filter:grayscale(1);transition:filter .55s ease,transform .55s var(--ease-premium),box-shadow .55s ease}
+.team-card:hover .team-photo{filter:grayscale(0);transform:scale(1.035);box-shadow:0 24px 60px rgba(0,0,0,.15)}
+.team-info h3{font-size:21px}.team-info .team-bio{max-width:290px}
+/* CTA */
+.cta{padding-top:80px;padding-bottom:150px}.cta-box{padding:105px 8%;border-radius:40px;box-shadow:0 35px 90px rgba(255,104,23,.16)}
+.cta-box h2{font-size:clamp(52px,6.5vw,92px)}
+/* Footer */
+.footer{padding-top:85px}.footer-logo{width:175px}.footer-top{padding-bottom:55px}.footer-cols{padding:32px 0}.bottom{padding-top:22px}
+/* Cursor premium desktop */
+@media (pointer:fine){body{cursor:none}a,button,.service[data-service],input,textarea,select{cursor:none}.v48-cursor{position:fixed;left:0;top:0;width:34px;height:34px;border-radius:50%;pointer-events:none;z-index:20000;transform:translate(-50%,-50%);opacity:0;transition:width .22s ease,height .22s ease,opacity .2s ease,transform .08s linear;background:rgba(255,255,255,.88);border:1px solid rgba(17,18,22,.18);box-shadow:0 6px 24px rgba(0,0,0,.12);mix-blend-mode:difference}.v48-cursor:before{content:"";position:absolute;inset:7px;background:url('./arasigns-mark-bg.png') center/contain no-repeat;filter:brightness(0) invert(1)}.v48-cursor.show{opacity:1}.v48-cursor.hover{width:58px;height:58px}.v48-cursor.click{transform:translate(-50%,-50%) scale(.82)}}
+/* marca d'água mais refinada */
+body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform:rotate(-14deg)}
+@media(max-width:1050px){.hero{gap:45px}.hero-art{min-height:560px}.hero-photo{height:560px}.about{gap:60px}.service-grid{grid-template-columns:repeat(2,1fr)}.service:nth-child(3n+2),.service:nth-child(3n+3){padding-left:0;border-left:0}.service:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}.service:nth-child(even):hover{padding-left:38px}}
+@media(max-width:720px){body:before{width:290px;height:290px;left:-95px;top:80px;opacity:.075}.header{height:72px;padding:0 20px}.logo{width:158px}.hero{padding-top:105px;gap:30px}.hero-copy h1{font-size:54px;line-height:.82}.hero-art{min-height:420px}.hero-photo{height:420px;border-radius:26px}.hero-stats{gap:20px}.section{padding:92px 20px}.section-head{margin-bottom:42px}.service-grid{grid-template-columns:1fr}.service,.service:nth-child(even){padding:27px 0 32px;border-left:0}.service:hover,.service:nth-child(even):hover{padding-left:0}.service-icon{margin-top:40px}.video-showcase{padding-top:95px;padding-bottom:105px}.video-grid{grid-template-columns:1fr}.video-tile,.video-tile.tall{height:390px}.video-column{grid-template-columns:1fr;gap:14px}.video-column .video-tile{height:270px}.video-grid-more{grid-template-columns:1fr;gap:14px}.video-grid-more .video-tile{height:300px}.about{gap:45px}.about-card{height:430px;border-radius:28px}.team-grid{gap:22px}.team-photo{width:155px;height:155px}.cta{padding-top:40px;padding-bottom:100px}.cta-box{padding:70px 22px;border-radius:28px}.footer{padding-top:60px}}
 </style>
 </head><body><div class="noise"></div>
 <header class="header" id="header"><a href="#inicio"><img class="logo" src="./image-01.png" alt="Arasigns"></a><nav class="nav" id="nav"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#videos">Vídeos</a><a href="#orcamento-express">Orçamento Express</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button class="menu" id="menu" aria-label="Menu"><span></span><span></span></button></header>
 <main>
-<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="1" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
-      <source src="./video-01.mp4" type="video/mp4">
+<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="hero" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
+      <source src="./video-04.mp4" type="video/mp4">
     </video><div class="floating-dot"></div><div class="hero-label"><small>PROJETO EM DESTAQUE</small><strong>Vai com Arasigns que é Mara!</strong></div></div></section>
 <section class="marquee"><div class="track"><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i><span>ADESIVOS</span><i>✦</i><span>VEÍCULOS</span><i>✦</i><span>ACM</span><i>✦</i><span>BANNERS</span><i>✦</i><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i></div></section>
 
@@ -278,33 +380,16 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
       <video data-video-slot="1" autoplay muted loop playsinline preload="auto">
         <source src="./video-01.mp4" type="video/mp4">
       </video>
-      <div class="video-caption">
-        <div><small>01 / PRODUÇÃO</small><strong>Estrutura Arasigns</strong></div>
-        <span>↗</span>
-      </div>
+      <div class="video-caption" data-video-caption-slot="1"><div><small>01 / PRODUÇÃO</small><strong>Estrutura Arasigns</strong></div><span>↗</span></div>
     </article>
-
     <div class="video-column">
-      <article class="video-tile">
-        <video data-video-slot="2" autoplay muted loop playsinline preload="auto">
-          <source src="./video-02.mp4" type="video/mp4">
-        </video>
-        <div class="video-caption">
-          <div><small>02 / PROCESSO</small><strong>Nosso trabalho</strong></div>
-          <span>↗</span>
-        </div>
-      </article>
-
-      <article class="video-tile">
-        <video data-video-slot="3" autoplay muted loop playsinline preload="auto">
-          <source src="./video-03.mp4" type="video/mp4">
-        </video>
-        <div class="video-caption">
-          <div><small>03 / DETALHES</small><strong>Feito para aparecer</strong></div>
-          <span>↗</span>
-        </div>
-      </article>
+      <article class="video-tile"><video data-video-slot="2" autoplay muted loop playsinline preload="auto"><source src="./video-02.mp4" type="video/mp4"></video><div class="video-caption" data-video-caption-slot="2"><div><small>02 / PROCESSO</small><strong>Nosso trabalho</strong></div><span>↗</span></div></article>
+      <article class="video-tile"><video data-video-slot="3" autoplay muted loop playsinline preload="auto"><source src="./video-03.mp4" type="video/mp4"></video><div class="video-caption" data-video-caption-slot="3"><div><small>03 / DETALHES</small><strong>Feito para aparecer</strong></div><span>↗</span></div></article>
     </div>
+  </div>
+  <div class="video-grid-more">
+    <article class="video-tile empty-video" id="videoTile4"><video data-video-slot="4" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder4">04 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="4"><div><small>04 / PROCESSO</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
+    <article class="video-tile empty-video" id="videoTile5"><video data-video-slot="5" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder5">05 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="5"><div><small>05 / DETALHES</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
   </div>
 
   <p class="video-note">Vídeos incorporados no HTML · autoplay · mute · loop · reprodução inline · enquadramento preservado.</p>
@@ -574,7 +659,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Troque os vídeos que aparecem na capa e na seção “Por trás da produção”. Você pode alterar o arquivo, o título e a descrição de cada vídeo. O arquivo enviado vai para o Firebase Storage e a mudança aparece para todos os dispositivos.</p><div class="admin-video-grid" id="adminVideoGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Agora a capa tem um vídeo independente e a seção “Por trás da produção” tem 5 espaços. Você pode trocar os arquivos, títulos e identificações. Tudo é salvo no Firebase e atualizado nos outros dispositivos.</p><div class="admin-video-hero" id="adminHeroVideo"></div><div class="admin-video-grid" id="adminVideoGrid"></div>
 <h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
       <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas para todos os dispositivos. O e-mail/senha do administrador são validados pelo Firebase Authentication.</p>
@@ -600,8 +685,11 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   const defaultVideos=[
     {slot:1,src:"./video-01.mp4",eyebrow:"01 / PRODUÇÃO",title:"Estrutura Arasigns"},
     {slot:2,src:"./video-02.mp4",eyebrow:"02 / PROCESSO",title:"Nosso trabalho"},
-    {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"}
+    {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"},
+    {slot:4,src:"",eyebrow:"04 / PROCESSO",title:"Vídeo novo"},
+    {slot:5,src:"",eyebrow:"05 / DETALHES",title:"Vídeo novo"}
   ];
+  let heroVideoData=JSON.parse(localStorage.getItem("arasigns_hero_video_v1")||"null")||{src:"./video-04.mp4",title:"Projeto em destaque"};
   let videoData=JSON.parse(localStorage.getItem("arasigns_videos_v1")||"null")||defaultVideos;
   window.arasignsVideoData=videoData;
   window.pendingAdminVideos=window.pendingAdminVideos||{};
@@ -816,50 +904,47 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   function applyVideoData(){
     (videoData||defaultVideos).forEach(v=>{
       document.querySelectorAll(`[data-video-slot="${v.slot}"]`).forEach(el=>{
-        const src=v.src||defaultVideos.find(x=>x.slot===v.slot)?.src;
-        if(!src)return;
-        let source=el.querySelector("source");
-        if(!source){source=document.createElement("source");el.appendChild(source);}
-        if(source.getAttribute("src")!==src){source.src=src;el.load();}
-        el.muted=true;el.playsInline=true;
-        el.play().catch(()=>{});
+        const src=v.src||"";
+        if(src){
+          let source=el.querySelector("source");
+          if(!source){source=document.createElement("source");el.appendChild(source);}
+          if(source.getAttribute("src")!==src){source.src=src;el.load();}
+          el.style.display="block";el.muted=true;el.playsInline=true;el.play().catch(()=>{});
+          const tile=document.getElementById(`videoTile${v.slot}`),ph=document.getElementById(`videoPlaceholder${v.slot}`);
+          if(tile)tile.classList.remove("empty-video"); if(ph)ph.style.display="none";
+        }else{
+          el.style.display="none";
+          const tile=document.getElementById(`videoTile${v.slot}`),ph=document.getElementById(`videoPlaceholder${v.slot}`);
+          if(tile)tile.classList.add("empty-video"); if(ph)ph.style.display="block";
+        }
       });
-      document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{
-        const sm=el.querySelector("small"),st=el.querySelector("strong");
-        if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;
-        if(st)st.textContent=v.title||"Vídeo Arasigns";
-      });
+      document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{const sm=el.querySelector("small"),st=el.querySelector("strong");if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;if(st)st.textContent=v.title||"Vídeo Arasigns";});
     });
+    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./video-04.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
   }
   function renderAdminVideos(){
     const wrap=document.getElementById("adminVideoGrid");if(!wrap)return;
+    const hero=document.getElementById("adminHeroVideo");
+    if(hero){hero.innerHTML=`<strong style="font-size:10px;display:block;margin-bottom:7px">VÍDEO DA CAPA (INÍCIO)</strong><div class="admin-video-preview"><video muted playsinline preload="metadata" src="${heroVideoData?.src||""}"></video></div><input type="file" id="heroVideoFile" accept="video/mp4,video/webm,video/quicktime"><input type="text" id="heroVideoTitle" value="${(heroVideoData?.title||"Projeto em destaque").replace(/"/g,'&quot;')}" placeholder="Título da capa"><div class="admin-video-status" id="heroVideoStatus"></div>`;hero.querySelector('#heroVideoFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;window.pendingAdminVideos.hero=f;hero.querySelector('video').src=URL.createObjectURL(f);hero.querySelector('video').load();hero.querySelector('#heroVideoStatus').textContent=`Novo arquivo selecionado: ${f.name}`;});}
     wrap.innerHTML=(videoData||defaultVideos).map(v=>`<div class="admin-video-card"><strong>VÍDEO 0${v.slot}</strong><div class="admin-video-preview" id="adminVideoPreview${v.slot}"><video muted playsinline preload="metadata" src="${v.src||""}"></video></div><input type="text" id="videoEyebrow${v.slot}" value="${(v.eyebrow||"").replace(/"/g,'&quot;')}" placeholder="Ex.: 01 / PRODUÇÃO"><input type="text" id="videoTitle${v.slot}" value="${(v.title||"").replace(/"/g,'&quot;')}" placeholder="Título do vídeo"><input type="file" id="videoFile${v.slot}" accept="video/mp4,video/webm,video/quicktime"><div class="admin-video-status" id="videoStatus${v.slot}"></div><div class="admin-video-help">Recomendado: MP4 H.264. O upload fica salvo na nuvem.</div></div>`).join("");
     wrap.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const slot=+input.id.replace('videoFile','');window.pendingAdminVideos[slot]=f;const prev=document.querySelector(`#adminVideoPreview${slot} video`);if(prev){prev.src=URL.createObjectURL(f);prev.load();}const st=document.getElementById(`videoStatus${slot}`);if(st)st.textContent=`Novo arquivo selecionado: ${f.name}`;}));
   }
   async function saveAdminVideos(){
     const next=(videoData||defaultVideos).map(v=>({...v,eyebrow:document.getElementById(`videoEyebrow${v.slot}`)?.value.trim()||v.eyebrow,title:document.getElementById(`videoTitle${v.slot}`)?.value.trim()||v.title}));
     const files=window.pendingAdminVideos||{};
-    if(window.firebaseSaveVideos){
-      const ok=await window.firebaseSaveVideos(next,files);
-      if(!ok)return false;
-    }else{
-      Object.entries(files).forEach(([slot,file])=>{
-        // Sem Firebase, apenas preview local; não tenta guardar vídeos grandes no localStorage.
-        const item=next.find(v=>v.slot==slot); if(item)item.src=URL.createObjectURL(file);
-      });
-    }
-    videoData=next;
-    window.arasignsVideoData=videoData;
-    localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
-    window.applyFirebaseVideos?.(videoData);
-    window.pendingAdminVideos={};
-    renderAdminVideos();
-    return true;
+    heroVideoData={...heroVideoData,title:document.getElementById('heroVideoTitle')?.value.trim()||heroVideoData.title};
+    if(window.firebaseSaveVideos){const ok=await window.firebaseSaveVideos(next,files,heroVideoData);if(!ok)return false;}
+    else{Object.entries(files).forEach(([slot,file])=>{if(slot==='hero'){heroVideoData.src=URL.createObjectURL(file);}else{const item=next.find(v=>v.slot==slot);if(item)item.src=URL.createObjectURL(file);}});}
+    videoData=next;window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));window.applyFirebaseVideos?.(videoData,heroVideoData);window.pendingAdminVideos={};renderAdminVideos();return true;
   }
-  window.applyFirebaseVideos=(remoteVideos)=>{
-    if(!Array.isArray(remoteVideos))return;
-    videoData=remoteVideos;window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));applyVideoData();
-    if(document.getElementById("adminVideoGrid"))renderAdminVideos();
+  window.applyFirebaseVideos=(remoteVideos,remoteHero)=>{
+    if(Array.isArray(remoteVideos)){
+      const incoming=remoteVideos;
+      videoData=defaultVideos.map(def=>incoming.find(v=>Number(v.slot)===def.slot)||def);
+      window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
+    }
+    if(remoteHero){heroVideoData=remoteHero;localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));}
+    applyVideoData();if(document.getElementById("adminVideoGrid"))renderAdminVideos();
   };
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
@@ -944,6 +1029,21 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       ticking=false;
     });
   },{passive:true});
+})();
+</script>
+
+<script id="arasigns-v48-cursor">
+(function(){
+ if(!window.matchMedia('(pointer:fine)').matches)return;
+ const c=document.createElement('div'); c.className='v48-cursor'; document.body.appendChild(c);
+ let mx=-100,my=-100,tx=-100,ty=-100;
+ window.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;c.classList.add('show')},{passive:true});
+ function tick(){mx+=(tx-mx)*.32;my+=(ty-my)*.32;c.style.left=mx+'px';c.style.top=my+'px';requestAnimationFrame(tick)}tick();
+ document.querySelectorAll('a,button,.service[data-service],input,textarea,select,.video-tile').forEach(el=>{
+   el.addEventListener('mouseenter',()=>c.classList.add('hover'));
+   el.addEventListener('mouseleave',()=>c.classList.remove('hover'));
+ });
+ window.addEventListener('mousedown',()=>c.classList.add('click'));window.addEventListener('mouseup',()=>c.classList.remove('click'));
 })();
 </script>
 </body></html>
