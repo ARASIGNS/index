@@ -661,10 +661,9 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Agora a capa tem um vídeo independente e a seção “Por trás da produção” tem 5 espaços. Você pode trocar os arquivos, títulos e identificações. Tudo é salvo no Firebase e atualizado nos outros dispositivos.</p><div class="admin-video-hero" id="adminHeroVideo"></div><div class="admin-video-grid" id="adminVideoGrid"></div>
-<h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Para trocar/adicionar vídeos, publique os arquivos no GitHub e altere os nomes no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
-      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. O acesso do ADM continua usando o login definido neste HTML.</p>
+      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. Os vídeos são publicados diretamente pelo GitHub. O acesso do ADM continua usando o login definido neste HTML.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
     </div>
   </div>
@@ -684,17 +683,20 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     outro:{label:"Outro projeto",rate:0,min:0}
   };
   let prices=JSON.parse(localStorage.getItem("arasigns_prices_v9")||"null")||defaultPrices;
+  /* ===== VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB =====
+     Para trocar um vídeo, altere somente o nome do arquivo abaixo e publique no GitHub.
+     Não existe mais upload de vídeo pelo ADM.
+  */
   const defaultVideos=[
     {slot:1,src:"./video-01.mp4",eyebrow:"01 / PRODUÇÃO",title:"Estrutura Arasigns"},
     {slot:2,src:"./video-02.mp4",eyebrow:"02 / PROCESSO",title:"Nosso trabalho"},
     {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"},
-    {slot:4,src:"",eyebrow:"04 / PROCESSO",title:"Vídeo novo"},
-    {slot:5,src:"",eyebrow:"05 / DETALHES",title:"Vídeo novo"}
+    {slot:4,src:"./video-04.mp4",eyebrow:"04 / PROCESSO",title:"Precisão em cada detalhe"},
+    {slot:5,src:"",eyebrow:"05 / DETALHES",title:"Novo vídeo"}
   ];
-  let heroVideoData=JSON.parse(localStorage.getItem("arasigns_hero_video_v1")||"null")||{src:"./video-04.mp4",title:"Projeto em destaque"};
-  let videoData=JSON.parse(localStorage.getItem("arasigns_videos_v1")||"null")||defaultVideos;
+  const heroVideoData={src:"./video-04.mp4",title:"Projeto em destaque"};
+  let videoData=defaultVideos.map(v=>({...v}));
   window.arasignsVideoData=videoData;
-  window.pendingAdminVideos=window.pendingAdminVideos||{};
   let qProduct=null,qLat=null,qLng=null,qImageName="",qImageData="",qApplied=false;
 
   const steps=[...document.querySelectorAll(".quote-step")];
@@ -924,36 +926,11 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     });
     document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./video-04.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
   }
-  function renderAdminVideos(){
-    const wrap=document.getElementById("adminVideoGrid");if(!wrap)return;
-    const hero=document.getElementById("adminHeroVideo");
-    if(hero){hero.innerHTML=`<strong style="font-size:10px;display:block;margin-bottom:7px">VÍDEO DA CAPA (INÍCIO)</strong><div class="admin-video-preview"><video muted playsinline preload="metadata" src="${heroVideoData?.src||""}"></video></div><input type="file" id="heroVideoFile" accept="video/mp4,video/webm,video/quicktime"><input type="text" id="heroVideoTitle" value="${(heroVideoData?.title||"Projeto em destaque").replace(/"/g,'&quot;')}" placeholder="Título da capa"><div class="admin-video-status" id="heroVideoStatus"></div>`;hero.querySelector('#heroVideoFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;window.pendingAdminVideos.hero=f;hero.querySelector('video').src=URL.createObjectURL(f);hero.querySelector('video').load();hero.querySelector('#heroVideoStatus').textContent=`Novo arquivo selecionado: ${f.name}`;});}
-    wrap.innerHTML=(videoData||defaultVideos).map(v=>`<div class="admin-video-card"><strong>VÍDEO 0${v.slot}</strong><div class="admin-video-preview" id="adminVideoPreview${v.slot}"><video muted playsinline preload="metadata" src="${v.src||""}"></video></div><input type="text" id="videoEyebrow${v.slot}" value="${(v.eyebrow||"").replace(/"/g,'&quot;')}" placeholder="Ex.: 01 / PRODUÇÃO"><input type="text" id="videoTitle${v.slot}" value="${(v.title||"").replace(/"/g,'&quot;')}" placeholder="Título do vídeo"><input type="file" id="videoFile${v.slot}" accept="video/mp4,video/webm,video/quicktime"><div class="admin-video-status" id="videoStatus${v.slot}"></div><div class="admin-video-help">Recomendado: MP4 H.264. O upload fica salvo na nuvem.</div></div>`).join("");
-    wrap.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const slot=+input.id.replace('videoFile','');window.pendingAdminVideos[slot]=f;const prev=document.querySelector(`#adminVideoPreview${slot} video`);if(prev){prev.src=URL.createObjectURL(f);prev.load();}const st=document.getElementById(`videoStatus${slot}`);if(st)st.textContent=`Novo arquivo selecionado: ${f.name}`;}));
-  }
-  async function saveAdminVideos(){
-    const next=(videoData||defaultVideos).map(v=>({...v,eyebrow:document.getElementById(`videoEyebrow${v.slot}`)?.value.trim()||v.eyebrow,title:document.getElementById(`videoTitle${v.slot}`)?.value.trim()||v.title}));
-    const files=window.pendingAdminVideos||{};
-    heroVideoData={...heroVideoData,title:document.getElementById('heroVideoTitle')?.value.trim()||heroVideoData.title};
-    if(window.firebaseSaveVideos){const ok=await window.firebaseSaveVideos(next,files,heroVideoData);if(!ok)return false;}
-    else{Object.entries(files).forEach(([slot,file])=>{if(slot==='hero'){heroVideoData.src=URL.createObjectURL(file);}else{const item=next.find(v=>v.slot==slot);if(item)item.src=URL.createObjectURL(file);}});}
-    videoData=next;window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));window.applyFirebaseVideos?.(videoData,heroVideoData);window.pendingAdminVideos={};renderAdminVideos();return true;
-  }
-  window.applyFirebaseVideos=(remoteVideos,remoteHero)=>{
-    if(Array.isArray(remoteVideos)){
-      const incoming=remoteVideos;
-      videoData=defaultVideos.map(def=>incoming.find(v=>Number(v.slot)===def.slot)||def);
-      window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
-    }
-    if(remoteHero){heroVideoData=remoteHero;localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));}
-    applyVideoData();if(document.getElementById("adminVideoGrid"))renderAdminVideos();
-  };
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
     Object.entries(prices).forEach(([key,p])=>{if(key==="outro"||key==="fachada")return;const tr=document.createElement("tr");tr.innerHTML=`<td>${p.label}</td><td><input type="number" step="0.01" data-rate="${key}" value="${p.rate}"></td><td><input type="number" step="0.01" data-min="${key}" value="${p.min}"></td>`;body.appendChild(tr);});
     renderAdminImages();
     renderAdminServices();
-    renderAdminVideos();
   }
   /* ===== PONTE FIREBASE REALTIME DATABASE ===== */
   window.arasignsGetState=function(){
@@ -962,8 +939,6 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       siteImages: JSON.parse(JSON.stringify(siteImages)),
       team: JSON.parse(JSON.stringify(teamData)),
       serviceGalleries: JSON.parse(JSON.stringify(serviceGalleries)),
-      videos: JSON.parse(JSON.stringify(videoData||defaultVideos)),
-      heroVideo: JSON.parse(JSON.stringify(heroVideoData||{}))
     };
   };
   window.arasignsApplyState=function(remote){
@@ -972,13 +947,9 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       if(remote.siteImages && typeof remote.siteImages==="object") siteImages={...siteImages,...remote.siteImages};
       if(Array.isArray(remote.team) && remote.team.length) teamData=remote.team;
       if(remote.serviceGalleries && typeof remote.serviceGalleries==="object") serviceGalleries=remote.serviceGalleries;
-      if(Array.isArray(remote.videos)) videoData=defaultVideos.map(def=>remote.videos.find(v=>Number(v.slot)===def.slot)||def);
-      if(remote.heroVideo && typeof remote.heroVideo==="object") heroVideoData={...heroVideoData,...remote.heroVideo};
       localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));
       localStorage.setItem("arasigns_site_images_v22",JSON.stringify(siteImages));
       localStorage.setItem("arasigns_team_v30",JSON.stringify(teamData));
-      localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
-      localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));
       applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); calc(); applyVideoData();
       if(document.getElementById("adminRows")) renderAdminRows();
     }catch(e){console.error("Erro ao aplicar dados do Firebase:",e);}
@@ -998,7 +969,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
     localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderAdminImages();calc();const videoOk=await saveAdminVideos();if(videoOk){await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");}
+    applySiteImages();renderTeam();renderAdminImages();calc();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
@@ -1085,7 +1056,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     projectId:"arasigns-site-d22f9",
     storageBucket:"arasigns-site-d22f9.firebasestorage.app",
     messagingSenderId:"463092471553",
-    appId:"1:463092471553:web:642f47c02245c59a3c2d00"
+    appId:"1:463092471553:web:642f4702245c59a3c2d00"
   };
   let app,db,remoteRef,ready=false,applying=false,lastWrite="";
   function status(text,error){
@@ -1096,9 +1067,6 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   function waitBridge(timeout=15000){return new Promise((resolve,reject)=>{const t=Date.now();(function tick(){if(typeof window.arasignsGetState==="function")return resolve();if(Date.now()-t>timeout)return reject(new Error("Ponte do site não encontrada"));setTimeout(tick,50)})()})}
   function cleanState(state){
     const out=JSON.parse(JSON.stringify(state||{}));
-    // Data URLs são suportadas para imagens, mas evitamos blob URLs de vídeos.
-    if(Array.isArray(out.videos))out.videos=out.videos.map(v=>({...v,src:(typeof v.src==="string"&&v.src.startsWith("blob:"))?"":v.src}));
-    if(out.heroVideo&&typeof out.heroVideo.src==="string"&&out.heroVideo.src.startsWith("blob:"))out.heroVideo.src="";
     return out;
   }
   async function save(){
@@ -1106,9 +1074,6 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     try{await waitBridge();const state=cleanState(window.arasignsGetState());lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Firebase sincronizado ✓");return true;}catch(e){console.error("[Arasigns Firebase] save",e);status("Erro ao salvar no Firebase",true);return false;}
   }
   window.firebaseSaveSiteState=save;
-  window.firebaseSaveVideos=async function(next,files,hero){
-    try{await waitBridge();const state=cleanState(window.arasignsGetState());state.videos=next;state.heroVideo=hero||state.heroVideo;lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Vídeos/dados sincronizados ✓");return true;}catch(e){console.error(e);status("Erro ao sincronizar dados",true);return false;}
-  };
   function start(){
     try{
       if(!window.firebase||!window.firebase.database){console.error("Firebase SDK não carregou");status("Firebase SDK não carregou",true);return;}
