@@ -358,6 +358,8 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
 @media(max-width:1050px){.hero{gap:45px}.hero-art{min-height:560px}.hero-photo{height:560px}.about{gap:60px}.service-grid{grid-template-columns:repeat(2,1fr)}.service:nth-child(3n+2),.service:nth-child(3n+3){padding-left:0;border-left:0}.service:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}.service:nth-child(even):hover{padding-left:38px}}
 @media(max-width:720px){body:before{width:290px;height:290px;left:-95px;top:80px;opacity:.075}.header{height:72px;padding:0 20px}.logo{width:158px}.hero{padding-top:105px;gap:30px}.hero-copy h1{font-size:54px;line-height:.82}.hero-art{min-height:420px}.hero-photo{height:420px;border-radius:26px}.hero-stats{gap:20px}.section{padding:92px 20px}.section-head{margin-bottom:42px}.service-grid{grid-template-columns:1fr}.service,.service:nth-child(even){padding:27px 0 32px;border-left:0}.service:hover,.service:nth-child(even):hover{padding-left:0}.service-icon{margin-top:40px}.video-showcase{padding-top:95px;padding-bottom:105px}.video-grid{grid-template-columns:1fr}.video-tile,.video-tile.tall{height:390px}.video-column{grid-template-columns:1fr;gap:14px}.video-column .video-tile{height:270px}.video-grid-more{grid-template-columns:1fr;gap:14px}.video-grid-more .video-tile{height:300px}.about{gap:45px}.about-card{height:430px;border-radius:28px}.team-grid{gap:22px}.team-photo{width:155px;height:155px}.cta{padding-top:40px;padding-bottom:100px}.cta-box{padding:70px 22px;border-radius:28px}.footer{padding-top:60px}}
 </style>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
 </head><body><div class="noise"></div>
 <header class="header" id="header"><a href="#inicio"><img class="logo" src="./image-01.png" alt="Arasigns"></a><nav class="nav" id="nav"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#videos">Vídeos</a><a href="#orcamento-express">Orçamento Express</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button class="menu" id="menu" aria-label="Menu"><span></span><span></span></button></header>
 <main>
@@ -1074,5 +1076,54 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
  window.addEventListener('mousedown',()=>c.classList.add('click'));window.addEventListener('mouseup',()=>c.classList.remove('click'));
 })();
 </script>
+<script id="arasigns-firebase-sync">
+(function(){
+  const firebaseConfig={
+    apiKey:"AIzaSyD43T-V46yfKJ6UC82G9IVNHR_nn0AF1T4",
+    authDomain:"arasigns-site-d22f9.firebaseapp.com",
+    databaseURL:"https://arasigns-site-d22f9-default-rtdb.firebaseio.com",
+    projectId:"arasigns-site-d22f9",
+    storageBucket:"arasigns-site-d22f9.firebasestorage.app",
+    messagingSenderId:"463092471553",
+    appId:"1:463092471553:web:642f47c02245c59a3c2d00"
+  };
+  let app,db,remoteRef,ready=false,applying=false,lastWrite="";
+  function status(text,error){
+    let el=document.getElementById("firebaseSyncStatus");
+    if(!el){el=document.createElement("div");el.id="firebaseSyncStatus";el.style.cssText="position:fixed;right:18px;bottom:18px;z-index:10050;background:#111216;color:#fff;border-radius:12px;padding:10px 13px;font:700 10px Arial;box-shadow:0 10px 30px rgba(0,0,0,.2)";document.body.appendChild(el);}
+    el.textContent=text;el.style.background=error?"#b42318":"#111216";clearTimeout(el._t);el._t=setTimeout(()=>el.remove(),3500);
+  }
+  function waitBridge(timeout=15000){return new Promise((resolve,reject)=>{const t=Date.now();(function tick(){if(typeof window.arasignsGetState==="function")return resolve();if(Date.now()-t>timeout)return reject(new Error("Ponte do site não encontrada"));setTimeout(tick,50)})()})}
+  function cleanState(state){
+    const out=JSON.parse(JSON.stringify(state||{}));
+    // Data URLs são suportadas para imagens, mas evitamos blob URLs de vídeos.
+    if(Array.isArray(out.videos))out.videos=out.videos.map(v=>({...v,src:(typeof v.src==="string"&&v.src.startsWith("blob:"))?"":v.src}));
+    if(out.heroVideo&&typeof out.heroVideo.src==="string"&&out.heroVideo.src.startsWith("blob:"))out.heroVideo.src="";
+    return out;
+  }
+  async function save(){
+    if(!ready||applying)return true;
+    try{await waitBridge();const state=cleanState(window.arasignsGetState());lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Firebase sincronizado ✓");return true;}catch(e){console.error("[Arasigns Firebase] save",e);status("Erro ao salvar no Firebase",true);return false;}
+  }
+  window.firebaseSaveSiteState=save;
+  window.firebaseSaveVideos=async function(next,files,hero){
+    try{await waitBridge();const state=cleanState(window.arasignsGetState());state.videos=next;state.heroVideo=hero||state.heroVideo;lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Vídeos/dados sincronizados ✓");return true;}catch(e){console.error(e);status("Erro ao sincronizar dados",true);return false;}
+  };
+  function start(){
+    try{
+      if(!window.firebase||!window.firebase.database){console.error("Firebase SDK não carregou");status("Firebase SDK não carregou",true);return;}
+      app=!firebase.apps.length?firebase.initializeApp(firebaseConfig):firebase.app();
+      db=firebase.database();remoteRef=db.ref("arasigns");ready=true;window.arasignsFirebase={app,database:db,path:"arasigns"};status("Firebase conectado ✓");
+      remoteRef.on("value",async snap=>{
+        const remote=snap.val(); if(!remote)return;
+        const h=JSON.stringify(remote); if(h===lastWrite)return;
+        try{await waitBridge();applying=true;window.arasignsApplyState(remote);status("Site atualizado pela nuvem ✓");}catch(e){console.error("[Arasigns Firebase] apply",e);status("Erro ao aplicar dados",true);}finally{applying=false;}
+      },err=>{console.error("[Arasigns Firebase] listener",err);status("Firebase recusou a conexão",true);});
+      // O botão SALVAR já chama a função do site; este listener cobre alterações que não passam por ele.
+      document.getElementById("adminSave")?.addEventListener("click",()=>setTimeout(save,900));
+    }catch(e){console.error("[Arasigns Firebase] init",e);status("Erro ao iniciar Firebase",true);}
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
+})();
+</script>
 </body></html>
-<script type="module" src="./firebase-sync.js"></script>
