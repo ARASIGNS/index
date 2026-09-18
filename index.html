@@ -251,6 +251,8 @@ body{--story-ease:cubic-bezier(.22,.61,.36,1)}
 .admin-video-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}.admin-video-card{border:1px solid #e7e7e7;border-radius:14px;padding:12px;background:#fafafa}.admin-video-card strong{display:block;font-size:10px;margin-bottom:7px}.admin-video-preview{height:130px;border-radius:10px;overflow:hidden;background:#111216;margin-bottom:8px;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:8px}.admin-video-preview video{width:100%;height:100%;object-fit:cover}.admin-video-card input[type=text]{width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:8px;padding:8px;margin-bottom:7px;font-size:9px}.admin-video-card input[type=file]{width:100%;font-size:9px}.admin-video-status{font-size:8px;color:#27894c;margin-top:7px;min-height:12px}.admin-video-help{font-size:8px;color:#777;line-height:1.45;margin-top:8px}
 @media(max-width:900px){.admin-video-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.admin-video-grid{grid-template-columns:1fr}}
+
+.hero-ara{color:#ff5a1f;}
 </style>
 </style>
 <style id="team-title-v36">
@@ -358,13 +360,18 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
 @media(max-width:1050px){.hero{gap:45px}.hero-art{min-height:560px}.hero-photo{height:560px}.about{gap:60px}.service-grid{grid-template-columns:repeat(2,1fr)}.service:nth-child(3n+2),.service:nth-child(3n+3){padding-left:0;border-left:0}.service:nth-child(even){padding-left:28px;border-left:1px solid var(--line)}.service:nth-child(even):hover{padding-left:38px}}
 @media(max-width:720px){body:before{width:290px;height:290px;left:-95px;top:80px;opacity:.075}.header{height:72px;padding:0 20px}.logo{width:158px}.hero{padding-top:105px;gap:30px}.hero-copy h1{font-size:54px;line-height:.82}.hero-art{min-height:420px}.hero-photo{height:420px;border-radius:26px}.hero-stats{gap:20px}.section{padding:92px 20px}.section-head{margin-bottom:42px}.service-grid{grid-template-columns:1fr}.service,.service:nth-child(even){padding:27px 0 32px;border-left:0}.service:hover,.service:nth-child(even):hover{padding-left:0}.service-icon{margin-top:40px}.video-showcase{padding-top:95px;padding-bottom:105px}.video-grid{grid-template-columns:1fr}.video-tile,.video-tile.tall{height:390px}.video-column{grid-template-columns:1fr;gap:14px}.video-column .video-tile{height:270px}.video-grid-more{grid-template-columns:1fr;gap:14px}.video-grid-more .video-tile{height:300px}.about{gap:45px}.about-card{height:430px;border-radius:28px}.team-grid{gap:22px}.team-photo{width:155px;height:155px}.cta{padding-top:40px;padding-bottom:100px}.cta-box{padding:70px 22px;border-radius:28px}.footer{padding-top:60px}}
 </style>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
+
+<style id="ara-laranja-style">
+.ara-laranja{
+  color:#F58220;
+}
+</style>
+
 </head><body><div class="noise"></div>
 <header class="header" id="header"><a href="#inicio"><img class="logo" src="./image-01.png" alt="Arasigns"></a><nav class="nav" id="nav"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#videos">Vídeos</a><a href="#orcamento-express">Orçamento Express</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button class="menu" id="menu" aria-label="Menu"><span></span><span></span></button></header>
 <main>
-<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="hero" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
-      <source src="./VÍDEO 6.mov" type="video/quicktime">
+<section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Vai com <span class="hero-ara">ARA</span><br>que é Mara.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="hero" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
+      <source src="./video-04.mp4" type="video/mp4">
     </video><div class="floating-dot"></div><div class="hero-label"><small>PROJETO EM DESTAQUE</small><strong>Vai com Arasigns que é Mara!</strong></div></div></section>
 <section class="marquee"><div class="track"><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i><span>ADESIVOS</span><i>✦</i><span>VEÍCULOS</span><i>✦</i><span>ACM</span><i>✦</i><span>BANNERS</span><i>✦</i><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i></div></section>
 
@@ -390,8 +397,8 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
     </div>
   </div>
   <div class="video-grid-more">
-    <article class="video-tile" id="videoTile4"><video data-video-slot="4" autoplay muted loop playsinline preload="auto"><source src="./video-04(1).mp4" type="video/mp4"></video><div class="video-caption" data-video-caption-slot="4"><div><small>04 / PROCESSO</small><strong>Precisão em cada detalhe</strong></div><span>↗</span></div></article>
-    <article class="video-tile" id="videoTile5"><video data-video-slot="5" autoplay muted loop playsinline preload="auto"><source src="./VIDEO 2 .mov" type="video/quicktime"></video><div class="video-caption" data-video-caption-slot="5"><div><small>05 / PRODUÇÃO</small><strong>Mais um olhar da Arasigns</strong></div><span>↗</span></div></article>
+    <article class="video-tile empty-video" id="videoTile4"><video data-video-slot="4" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder4">04 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="4"><div><small>04 / PROCESSO</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
+    <article class="video-tile empty-video" id="videoTile5"><video data-video-slot="5" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder5">05 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="5"><div><small>05 / DETALHES</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
   </div>
 
   <p class="video-note">Vídeos incorporados no HTML · autoplay · mute · loop · reprodução inline · enquadramento preservado.</p>
@@ -466,7 +473,7 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
 <section class="section about" id="sobre"><div class="about-card reveal"><img class="about-facade" src="./image-03.png" alt="Fachada da Arasigns"><div class="about-overlay"></div><div class="about-tag">ARASIGNS<br>COMUNICAÇÃO VISUAL</div></div><div class="about-copy reveal"><p class="eyebrow">EXPERIÊNCIA QUE APARECE</p><h2>Mais que produzir.<br><em>A gente faz acontecer.</em></h2><p>Há mais de duas décadas, a Arasigns transforma ideias em comunicação visual para empresas que querem se destacar.</p><p>Unimos experiência, produção e atenção aos detalhes para entregar projetos que fazem sentido para cada marca.</p><div class="points"><div class="point"><b>01</b><span>Projeto pensado para sua marca</span></div><div class="point"><b>02</b><span>Produção com acabamento profissional</span></div><div class="point"><b>03</b><span>Instalação e entrega</span></div></div></div></section>
 <section class="section team-section" id="equipe"><div class="section-head reveal"><div><p class="eyebrow">QUEM FAZ ACONTECER</p><h2>Profissionais que fazem sua ideia<br><em>virar <span class="team-realce">REALIDADE!</span></em></h2></div><p>Uma equipe que transforma projeto, produção e acabamento em comunicação visual de verdade.</p></div><div class="team-grid" id="teamGrid"></div></section>
 
-<section class="section cta" id="contato"><div class="cta-box reveal"><p class="eyebrow" style="justify-content:center;color:#242424">PRONTO PARA DAR MAIS PRESENÇA À SUA MARCA?</p><h2>Vai com a Arasigns<br>que é <em class="mara-white">Mara.</em></h2><p>Conte sua ideia. A gente transforma em projeto.</p><a class="btn dark-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a></div></section>
+<section class="section cta" id="contato"><div class="cta-box reveal"><p class="eyebrow" style="justify-content:center;color:#242424">PRONTO PARA DAR MAIS PRESENÇA À SUA MARCA?</p><h2>Vai com <span class="ara-laranja">ARA</span><br>que é <em class="mara-white">Mara.</em></h2><p>Conte sua ideia. A gente transforma em projeto.</p><a class="btn dark-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a></div></section>
 </main>
 <footer class="footer"><div class="footer-top"><img class="footer-logo" src="./image-04.png" alt="Arasigns"><p>Comunicação visual que faz sua marca ocupar espaço.</p><a class="instagram-final-btn" href="https://www.instagram.com/arasigns" target="_blank" rel="noopener noreferrer" aria-label="Seguir a Arasigns no Instagram"><span class="ig-icon" aria-hidden="true"></span><span>SEGUIR NO INSTAGRAM</span><span aria-hidden="true">↗</span></a></div><div class="footer-cols"><div><small>ENDEREÇO</small><p>Rua Comendador Pedro Morganti, 940<br>Araraquara — SP<br>14800-390</p></div><div><small>ATENDIMENTO</small><p>Segunda a sexta<br>08:00 — 18:00</p></div><div><small>CONTATO</small><p>(16) 99793-1616<br>arasigns@arasigns.com.br</p></div></div><div class="bottom"><span>© 2026 Arasigns. Todos os direitos reservados.</span><span>Comunicação visual • Araraquara/SP</span></div></footer>
 <button class="admin-open" id="adminOpen" type="button" aria-label="Área administrativa">⚙</button><a class="wa" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener" aria-label="Solicite seu orçamento pelo WhatsApp"><img src="./image-05.png" alt="Solicite seu orçamento aqui pelo WhatsApp"></a><script>const header=document.getElementById("header");
@@ -661,9 +668,10 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Os 6 vídeos são gerenciados diretamente pelo GitHub. Para trocar algum, publique o arquivo com o mesmo nome no GitHub e ajuste apenas o nome no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><h4 class="admin-section-title">VÍDEOS DO SITE</h4><p>Agora a capa tem um vídeo independente e a seção “Por trás da produção” tem 5 espaços. Você pode trocar os arquivos, títulos e identificações. Tudo é salvo no Firebase e atualizado nos outros dispositivos.</p><div class="admin-video-hero" id="adminHeroVideo"></div><div class="admin-video-grid" id="adminVideoGrid"></div>
+<h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
-      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. Os vídeos são publicados diretamente pelo GitHub. O acesso do ADM continua usando o login definido neste HTML.</p>
+      <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas para todos os dispositivos. O e-mail/senha do administrador são validados pelo Firebase Authentication.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
     </div>
   </div>
@@ -683,20 +691,17 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     outro:{label:"Outro projeto",rate:0,min:0}
   };
   let prices=JSON.parse(localStorage.getItem("arasigns_prices_v9")||"null")||defaultPrices;
-  /* ===== VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB =====
-     Para trocar um vídeo, altere somente o nome do arquivo abaixo e publique no GitHub.
-     Não existe mais upload de vídeo pelo ADM.
-  */
   const defaultVideos=[
     {slot:1,src:"./video-01.mp4",eyebrow:"01 / PRODUÇÃO",title:"Estrutura Arasigns"},
     {slot:2,src:"./video-02.mp4",eyebrow:"02 / PROCESSO",title:"Nosso trabalho"},
     {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"},
-    {slot:4,src:"./video-04(1).mp4",eyebrow:"04 / PROCESSO",title:"Precisão em cada detalhe"},
-    {slot:5,src:"./VIDEO 2 .mov",eyebrow:"05 / PRODUÇÃO",title:"Mais um olhar da Arasigns"}
+    {slot:4,src:"",eyebrow:"04 / PROCESSO",title:"Vídeo novo"},
+    {slot:5,src:"",eyebrow:"05 / DETALHES",title:"Vídeo novo"}
   ];
-  const heroVideoData={src:"./VÍDEO 6.mov",title:"Projeto em destaque"};
-  let videoData=defaultVideos.map(v=>({...v}));
+  let heroVideoData=JSON.parse(localStorage.getItem("arasigns_hero_video_v1")||"null")||{src:"./video-04.mp4",title:"Projeto em destaque"};
+  let videoData=JSON.parse(localStorage.getItem("arasigns_videos_v1")||"null")||defaultVideos;
   window.arasignsVideoData=videoData;
+  window.pendingAdminVideos=window.pendingAdminVideos||{};
   let qProduct=null,qLat=null,qLng=null,qImageName="",qImageData="",qApplied=false;
 
   const steps=[...document.querySelectorAll(".quote-step")];
@@ -884,7 +889,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   const SERVICE_DB="arasigns_service_gallery_db_v1", SERVICE_STORE="galleries";
   function openServiceDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(SERVICE_DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(SERVICE_STORE))r.result.createObjectStore(SERVICE_STORE);};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
   async function loadServiceGalleries(){try{const db=await openServiceDB();serviceGalleries={};for(const s of serviceAdminDefaults){const tx=db.transaction(SERVICE_STORE,"readonly"),req=tx.objectStore(SERVICE_STORE).get(s.key);const val=await new Promise((res,rej)=>{req.onsuccess=()=>res(req.result||[]);req.onerror=()=>rej(req.error);});serviceGalleries[s.key]=val;}db.close();}catch(e){try{serviceGalleries=JSON.parse(localStorage.getItem("arasigns_service_galleries_v38")||"{}");}catch(_){serviceGalleries={};}}}
-  async function saveServiceGallery(key){try{const db=await openServiceDB();await new Promise((resolve,reject)=>{const tx=db.transaction(SERVICE_STORE,"readwrite");tx.objectStore(SERVICE_STORE).put(serviceGalleries[key]||[],key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();window.firebaseSaveSiteState?.();return true;}catch(e){try{localStorage.setItem("arasigns_service_galleries_v38",JSON.stringify(serviceGalleries));window.firebaseSaveSiteState?.();return true;}catch(_){return false;}}}
+  async function saveServiceGallery(key){try{const db=await openServiceDB();await new Promise((resolve,reject)=>{const tx=db.transaction(SERVICE_STORE,"readwrite");tx.objectStore(SERVICE_STORE).put(serviceGalleries[key]||[],key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();return true;}catch(e){try{localStorage.setItem("arasigns_service_galleries_v38",JSON.stringify(serviceGalleries));return true;}catch(_){return false;}}}
   function resizeImageFile(file,cb){
     if(!file)return; const r=new FileReader(); r.onload=e=>{const img=new Image(); img.onload=()=>{const max=1400;let w=img.naturalWidth,h=img.naturalHeight; if(Math.max(w,h)>max){const k=max/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k);} const c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);cb(c.toDataURL("image/jpeg",.82));};img.src=e.target.result;}; r.readAsDataURL(file);
   }
@@ -924,36 +929,39 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       });
       document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{const sm=el.querySelector("small"),st=el.querySelector("strong");if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;if(st)st.textContent=v.title||"Vídeo Arasigns";});
     });
-    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./VÍDEO 6.mov";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
+    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./video-04.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
   }
+  function renderAdminVideos(){
+    const wrap=document.getElementById("adminVideoGrid");if(!wrap)return;
+    const hero=document.getElementById("adminHeroVideo");
+    if(hero){hero.innerHTML=`<strong style="font-size:10px;display:block;margin-bottom:7px">VÍDEO DA CAPA (INÍCIO)</strong><div class="admin-video-preview"><video muted playsinline preload="metadata" src="${heroVideoData?.src||""}"></video></div><input type="file" id="heroVideoFile" accept="video/mp4,video/webm,video/quicktime"><input type="text" id="heroVideoTitle" value="${(heroVideoData?.title||"Projeto em destaque").replace(/"/g,'&quot;')}" placeholder="Título da capa"><div class="admin-video-status" id="heroVideoStatus"></div>`;hero.querySelector('#heroVideoFile').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;window.pendingAdminVideos.hero=f;hero.querySelector('video').src=URL.createObjectURL(f);hero.querySelector('video').load();hero.querySelector('#heroVideoStatus').textContent=`Novo arquivo selecionado: ${f.name}`;});}
+    wrap.innerHTML=(videoData||defaultVideos).map(v=>`<div class="admin-video-card"><strong>VÍDEO 0${v.slot}</strong><div class="admin-video-preview" id="adminVideoPreview${v.slot}"><video muted playsinline preload="metadata" src="${v.src||""}"></video></div><input type="text" id="videoEyebrow${v.slot}" value="${(v.eyebrow||"").replace(/"/g,'&quot;')}" placeholder="Ex.: 01 / PRODUÇÃO"><input type="text" id="videoTitle${v.slot}" value="${(v.title||"").replace(/"/g,'&quot;')}" placeholder="Título do vídeo"><input type="file" id="videoFile${v.slot}" accept="video/mp4,video/webm,video/quicktime"><div class="admin-video-status" id="videoStatus${v.slot}"></div><div class="admin-video-help">Recomendado: MP4 H.264. O upload fica salvo na nuvem.</div></div>`).join("");
+    wrap.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const slot=+input.id.replace('videoFile','');window.pendingAdminVideos[slot]=f;const prev=document.querySelector(`#adminVideoPreview${slot} video`);if(prev){prev.src=URL.createObjectURL(f);prev.load();}const st=document.getElementById(`videoStatus${slot}`);if(st)st.textContent=`Novo arquivo selecionado: ${f.name}`;}));
+  }
+  async function saveAdminVideos(){
+    const next=(videoData||defaultVideos).map(v=>({...v,eyebrow:document.getElementById(`videoEyebrow${v.slot}`)?.value.trim()||v.eyebrow,title:document.getElementById(`videoTitle${v.slot}`)?.value.trim()||v.title}));
+    const files=window.pendingAdminVideos||{};
+    heroVideoData={...heroVideoData,title:document.getElementById('heroVideoTitle')?.value.trim()||heroVideoData.title};
+    if(window.firebaseSaveVideos){const ok=await window.firebaseSaveVideos(next,files,heroVideoData);if(!ok)return false;}
+    else{Object.entries(files).forEach(([slot,file])=>{if(slot==='hero'){heroVideoData.src=URL.createObjectURL(file);}else{const item=next.find(v=>v.slot==slot);if(item)item.src=URL.createObjectURL(file);}});}
+    videoData=next;window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));window.applyFirebaseVideos?.(videoData,heroVideoData);window.pendingAdminVideos={};renderAdminVideos();return true;
+  }
+  window.applyFirebaseVideos=(remoteVideos,remoteHero)=>{
+    if(Array.isArray(remoteVideos)){
+      const incoming=remoteVideos;
+      videoData=defaultVideos.map(def=>incoming.find(v=>Number(v.slot)===def.slot)||def);
+      window.arasignsVideoData=videoData;localStorage.setItem("arasigns_videos_v1",JSON.stringify(videoData));
+    }
+    if(remoteHero){heroVideoData=remoteHero;localStorage.setItem("arasigns_hero_video_v1",JSON.stringify(heroVideoData));}
+    applyVideoData();if(document.getElementById("adminVideoGrid"))renderAdminVideos();
+  };
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
     Object.entries(prices).forEach(([key,p])=>{if(key==="outro"||key==="fachada")return;const tr=document.createElement("tr");tr.innerHTML=`<td>${p.label}</td><td><input type="number" step="0.01" data-rate="${key}" value="${p.rate}"></td><td><input type="number" step="0.01" data-min="${key}" value="${p.min}"></td>`;body.appendChild(tr);});
     renderAdminImages();
     renderAdminServices();
+    renderAdminVideos();
   }
-  /* ===== PONTE FIREBASE REALTIME DATABASE ===== */
-  window.arasignsGetState=function(){
-    return {
-      prices: JSON.parse(JSON.stringify(prices)),
-      siteImages: JSON.parse(JSON.stringify(siteImages)),
-      team: JSON.parse(JSON.stringify(teamData)),
-      serviceGalleries: JSON.parse(JSON.stringify(serviceGalleries)),
-    };
-  };
-  window.arasignsApplyState=function(remote){
-    try{
-      if(remote.prices && typeof remote.prices==="object") prices={...prices,...remote.prices};
-      if(remote.siteImages && typeof remote.siteImages==="object") siteImages={...siteImages,...remote.siteImages};
-      if(Array.isArray(remote.team) && remote.team.length) teamData=remote.team;
-      if(remote.serviceGalleries && typeof remote.serviceGalleries==="object") serviceGalleries=remote.serviceGalleries;
-      localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));
-      localStorage.setItem("arasigns_site_images_v22",JSON.stringify(siteImages));
-      localStorage.setItem("arasigns_team_v30",JSON.stringify(teamData));
-      applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); calc(); applyVideoData();
-      if(document.getElementById("adminRows")) renderAdminRows();
-    }catch(e){console.error("Erro ao aplicar dados do Firebase:",e);}
-  };
   document.getElementById("adminOpen")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("openAdmin")?.addEventListener("click",()=>{adminOverlay.classList.add("open");adminLogin.style.display="block";adminPanel.classList.remove("open");});
   document.getElementById("adminClose")?.addEventListener("click",()=>adminOverlay.classList.remove("open"));
@@ -969,7 +977,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
     localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderAdminImages();calc();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
+    applySiteImages();renderTeam();renderAdminImages();calc();const videoOk=await saveAdminVideos();if(videoOk)alert("Alterações salvas e sincronizadas. ✓");
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
@@ -1047,48 +1055,5 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
  window.addEventListener('mousedown',()=>c.classList.add('click'));window.addEventListener('mouseup',()=>c.classList.remove('click'));
 })();
 </script>
-<script id="arasigns-firebase-sync">
-(function(){
-  const firebaseConfig={
-    apiKey:"AIzaSyD43T-V46yfKJ6UC82G9IVNHR_nn0AF1T4",
-    authDomain:"arasigns-site-d22f9.firebaseapp.com",
-    databaseURL:"https://arasigns-site-d22f9-default-rtdb.firebaseio.com",
-    projectId:"arasigns-site-d22f9",
-    storageBucket:"arasigns-site-d22f9.firebasestorage.app",
-    messagingSenderId:"463092471553",
-    appId:"1:463092471553:web:642f4702245c59a3c2d00"
-  };
-  let app,db,remoteRef,ready=false,applying=false,lastWrite="";
-  function status(text,error){
-    let el=document.getElementById("firebaseSyncStatus");
-    if(!el){el=document.createElement("div");el.id="firebaseSyncStatus";el.style.cssText="position:fixed;right:18px;bottom:18px;z-index:10050;background:#111216;color:#fff;border-radius:12px;padding:10px 13px;font:700 10px Arial;box-shadow:0 10px 30px rgba(0,0,0,.2)";document.body.appendChild(el);}
-    el.textContent=text;el.style.background=error?"#b42318":"#111216";clearTimeout(el._t);el._t=setTimeout(()=>el.remove(),3500);
-  }
-  function waitBridge(timeout=15000){return new Promise((resolve,reject)=>{const t=Date.now();(function tick(){if(typeof window.arasignsGetState==="function")return resolve();if(Date.now()-t>timeout)return reject(new Error("Ponte do site não encontrada"));setTimeout(tick,50)})()})}
-  function cleanState(state){
-    const out=JSON.parse(JSON.stringify(state||{}));
-    return out;
-  }
-  async function save(){
-    if(!ready||applying)return true;
-    try{await waitBridge();const state=cleanState(window.arasignsGetState());lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Firebase sincronizado ✓");return true;}catch(e){console.error("[Arasigns Firebase] save",e);status("Erro ao salvar no Firebase",true);return false;}
-  }
-  window.firebaseSaveSiteState=save;
-  function start(){
-    try{
-      if(!window.firebase||!window.firebase.database){console.error("Firebase SDK não carregou");status("Firebase SDK não carregou",true);return;}
-      app=!firebase.apps.length?firebase.initializeApp(firebaseConfig):firebase.app();
-      db=firebase.database();remoteRef=db.ref("arasigns");ready=true;window.arasignsFirebase={app,database:db,path:"arasigns"};status("Firebase conectado ✓");
-      remoteRef.on("value",async snap=>{
-        const remote=snap.val(); if(!remote)return;
-        const h=JSON.stringify(remote); if(h===lastWrite)return;
-        try{await waitBridge();applying=true;window.arasignsApplyState(remote);status("Site atualizado pela nuvem ✓");}catch(e){console.error("[Arasigns Firebase] apply",e);status("Erro ao aplicar dados",true);}finally{applying=false;}
-      },err=>{console.error("[Arasigns Firebase] listener",err);status("Firebase recusou a conexão",true);});
-      // O botão SALVAR já chama a função do site; este listener cobre alterações que não passam por ele.
-      document.getElementById("adminSave")?.addEventListener("click",()=>setTimeout(save,900));
-    }catch(e){console.error("[Arasigns Firebase] init",e);status("Erro ao iniciar Firebase",true);}
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
-})();
-</script>
 </body></html>
+<script type="module" src="./firebase-sync.js"></script>
