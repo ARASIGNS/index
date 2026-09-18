@@ -1133,7 +1133,19 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   }
   async function save(){
     if(!ready||applying)return true;
-    try{await waitBridge();const state=cleanState(window.arasignsGetState());lastWrite=JSON.stringify(state);await remoteRef.set(state);status("Firebase sincronizado ✓");return true;}catch(e){console.error("[Arasigns Firebase] save",e);status("Erro ao salvar no Firebase",true);return false;}
+    try{
+      await waitBridge();
+      const state=cleanState(window.arasignsGetState());
+      await remoteRef.child("videoPositions").set(state.videoPositions||{});
+      await remoteRef.set(state);
+      lastWrite=JSON.stringify(state);
+      status("Firebase sincronizado ✓");
+      return true;
+    }catch(e){
+      console.error("[Arasigns Firebase] save",e);
+      status("Erro ao salvar no Firebase",true);
+      return false;
+    }
   }
   window.firebaseSaveSiteState=save;
   function start(){
@@ -1144,8 +1156,27 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       remoteRef.on("value",async snap=>{
         const remote=snap.val(); if(!remote)return;
         const h=JSON.stringify(remote); if(h===lastWrite)return;
-        try{await waitBridge();applying=true;window.arasignsApplyState(remote);status("Site atualizado pela nuvem ✓");}catch(e){console.error("[Arasigns Firebase] apply",e);status("Erro ao aplicar dados",true);}finally{applying=false;}
+        try{
+          await waitBridge();
+          applying=true;
+          window.arasignsApplyState(remote);
+          applyVideoPositions();
+          status("Site atualizado pela nuvem ✓");
+        }catch(e){
+          console.error("[Arasigns Firebase] apply",e);
+          status("Erro ao aplicar dados",true);
+        }finally{applying=false;}
       },err=>{console.error("[Arasigns Firebase] listener",err);status("Firebase recusou a conexão",true);});
+
+      remoteRef.child("videoPositions").on("value",snap=>{
+        const cloud=snap.val();
+        if(!cloud || typeof cloud!=="object") return;
+        videoPositions={...defaultVideoPositions,...cloud};
+        localStorage.setItem("arasigns_video_positions_v1",JSON.stringify(videoPositions));
+        applyVideoPositions();
+        if(document.getElementById("adminVideoPositionGrid")) renderAdminVideoPositions();
+      },err=>console.error("[Arasigns Firebase] videoPositions listener",err));
+
       // O botão SALVAR já chama a função do site; este listener cobre alterações que não passam por ele.
       document.getElementById("adminSave")?.addEventListener("click",()=>setTimeout(save,900));
     }catch(e){console.error("[Arasigns Firebase] init",e);status("Erro ao iniciar Firebase",true);}
