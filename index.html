@@ -364,7 +364,7 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
 <header class="header" id="header"><a href="#inicio"><img class="logo" src="./image-01.png" alt="Arasigns"></a><nav class="nav" id="nav"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#videos">Vídeos</a><a href="#orcamento-express">Orçamento Express</a><a href="#sobre">Quem somos</a><a href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button class="menu" id="menu" aria-label="Menu"><span></span><span></span></button></header>
 <main>
 <section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br><em>vai com a</em><br>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><video class="hero-photo hero-video" data-video-slot="hero" autoplay muted loop playsinline preload="metadata" poster="./image-02.png">
-      <source src="./video-04.mp4" type="video/mp4">
+      <source src="./VÍDEO 6.mov" type="video/quicktime">
     </video><div class="floating-dot"></div><div class="hero-label"><small>PROJETO EM DESTAQUE</small><strong>Vai com Arasigns que é Mara!</strong></div></div></section>
 <section class="marquee"><div class="track"><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i><span>ADESIVOS</span><i>✦</i><span>VEÍCULOS</span><i>✦</i><span>ACM</span><i>✦</i><span>BANNERS</span><i>✦</i><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i></div></section>
 
@@ -390,8 +390,8 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
     </div>
   </div>
   <div class="video-grid-more">
-    <article class="video-tile empty-video" id="videoTile4"><video data-video-slot="4" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder4">04 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="4"><div><small>04 / PROCESSO</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
-    <article class="video-tile empty-video" id="videoTile5"><video data-video-slot="5" autoplay muted loop playsinline preload="auto" style="display:none"></video><div class="video-placeholder" id="videoPlaceholder5">05 / NOVO VÍDEO<br>Adicione pelo painel ADM</div><div class="video-caption" data-video-caption-slot="5"><div><small>05 / DETALHES</small><strong>Vídeo novo</strong></div><span>↗</span></div></article>
+    <article class="video-tile" id="videoTile4"><video data-video-slot="4" autoplay muted loop playsinline preload="auto"><source src="./video-04(1).mp4" type="video/mp4"></video><div class="video-caption" data-video-caption-slot="4"><div><small>04 / PROCESSO</small><strong>Precisão em cada detalhe</strong></div><span>↗</span></div></article>
+    <article class="video-tile" id="videoTile5"><video data-video-slot="5" autoplay muted loop playsinline preload="auto"><source src="./VIDEO 2 .mov" type="video/quicktime"></video><div class="video-caption" data-video-caption-slot="5"><div><small>05 / PRODUÇÃO</small><strong>Mais um olhar da Arasigns</strong></div><span>↗</span></div></article>
   </div>
 
   <p class="video-note">Vídeos incorporados no HTML · autoplay · mute · loop · reprodução inline · enquadramento preservado.</p>
@@ -661,7 +661,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Para trocar/adicionar vídeos, publique os arquivos no GitHub e altere os nomes no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Os 6 vídeos são gerenciados diretamente pelo GitHub. Para trocar algum, publique o arquivo com o mesmo nome no GitHub e ajuste apenas o nome no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
       <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. Os vídeos são publicados diretamente pelo GitHub. O acesso do ADM continua usando o login definido neste HTML.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
@@ -691,10 +691,10 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     {slot:1,src:"./video-01.mp4",eyebrow:"01 / PRODUÇÃO",title:"Estrutura Arasigns"},
     {slot:2,src:"./video-02.mp4",eyebrow:"02 / PROCESSO",title:"Nosso trabalho"},
     {slot:3,src:"./video-03.mp4",eyebrow:"03 / DETALHES",title:"Feito para aparecer"},
-    {slot:4,src:"./video-04.mp4",eyebrow:"04 / PROCESSO",title:"Precisão em cada detalhe"},
-    {slot:5,src:"",eyebrow:"05 / DETALHES",title:"Novo vídeo"}
+    {slot:4,src:"./video-04(1).mp4",eyebrow:"04 / PROCESSO",title:"Precisão em cada detalhe"},
+    {slot:5,src:"./VIDEO 2 .mov",eyebrow:"05 / PRODUÇÃO",title:"Mais um olhar da Arasigns"}
   ];
-  const heroVideoData={src:"./video-04.mp4",title:"Projeto em destaque"};
+  const heroVideoData={src:"./VÍDEO 6.mov",title:"Projeto em destaque"};
   let videoData=defaultVideos.map(v=>({...v}));
   window.arasignsVideoData=videoData;
   let qProduct=null,qLat=null,qLng=null,qImageName="",qImageData="",qApplied=false;
@@ -924,7 +924,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       });
       document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{const sm=el.querySelector("small"),st=el.querySelector("strong");if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;if(st)st.textContent=v.title||"Vídeo Arasigns";});
     });
-    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./video-04.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
+    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./VÍDEO 6.mov";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
   }
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
