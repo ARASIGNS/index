@@ -196,6 +196,16 @@ body.modal-open{overflow:hidden}
 
 .admin-panel{max-height:85vh;overflow:auto}
 .admin-section-title{margin:25px 0 8px!important;font-size:14px!important;color:#111!important;font-weight:900}
+
+.admin-video-position-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.admin-video-position-card{border:1px solid #e7e7e7;border-radius:14px;padding:12px;background:#fafafa}
+.admin-video-position-card strong{display:block;font-size:11px;margin-bottom:4px}
+.admin-video-position-card small{display:block;font-size:8px;color:#888;margin-bottom:9px}
+.admin-video-position-card input[type=range]{width:100%;margin:4px 0 7px;accent-color:#ff6817}
+.admin-video-position-row{display:flex;align-items:center;gap:9px}
+.admin-video-position-value{min-width:44px;text-align:center;border-radius:8px;background:#17181b;color:#fff;padding:6px 5px;font-size:9px;font-weight:900}
+.admin-video-position-help{font-size:9px!important;color:#777!important;line-height:1.55!important;margin:9px 0 0!important}
+@media(max-width:600px){.admin-video-position-grid{grid-template-columns:1fr}}
 .admin-image-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .admin-image-card{border:1px solid #e7e7e7;border-radius:14px;padding:12px;background:#fafafa}
 .admin-image-card strong{display:block;font-size:10px;margin-bottom:7px}.admin-image-card input[type=text]{margin-bottom:7px!important}
@@ -661,7 +671,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
         <thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
         <tbody id="adminRows"></tbody>
       </table>
-      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Os 6 vídeos são gerenciados diretamente pelo GitHub. Para trocar algum, publique o arquivo com o mesmo nome no GitHub e ajuste apenas o nome no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
+      <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input type="text" id="imgSiteFacade" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteFacade" accept="image/*"></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input type="text" id="imgSiteLogo" placeholder="URL da imagem (opcional)"><input type="file" id="fileSiteLogo" accept="image/*"></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 12px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os arquivos dos 6 vídeos continuam sendo gerenciados diretamente pelo GitHub. Aqui você pode ajustar somente a <strong>posição vertical</strong> da imagem dentro de cada vídeo. A posição é salva no Firebase e fica aplicada no site para todos os dispositivos.</div><h4 class="admin-section-title" style="margin-top:14px!important">AJUSTE VERTICAL DOS VÍDEOS</h4><div class="admin-video-position-grid" id="adminVideoPositionGrid"></div><p class="admin-video-position-help">Arraste o controle para cima ou para baixo até enquadrar o rosto ou o detalhe que você quer mostrar. <strong>50%</strong> é o centro. Depois clique em <strong>SALVAR ALTERAÇÕES</strong>.</p><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
       <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. Os vídeos são publicados diretamente pelo GitHub. O acesso do ADM continua usando o login definido neste HTML.</p>
       <div class="admin-actions"><button class="admin-cancel" id="adminLogout">SAIR</button></div>
@@ -696,6 +706,9 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
   ];
   const heroVideoData={src:"./V%C3%8DDEO%206.mp4",title:"Projeto em destaque"};
   let videoData=defaultVideos.map(v=>({...v}));
+  const defaultVideoPositions={hero:50,1:50,2:50,3:50,4:50,5:50};
+  let videoPositions=JSON.parse(localStorage.getItem("arasigns_video_positions_v1")||"null")||{...defaultVideoPositions};
+  videoPositions={...defaultVideoPositions,...videoPositions};
   window.arasignsVideoData=videoData;
   let qProduct=null,qLat=null,qLng=null,qImageName="",qImageData="",qApplied=false;
 
@@ -909,6 +922,8 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     (videoData||defaultVideos).forEach(v=>{
       document.querySelectorAll(`[data-video-slot="${v.slot}"]`).forEach(el=>{
         const src=v.src||"";
+        const pos=Number(videoPositions?.[v.slot] ?? 50);
+        el.style.objectPosition=`50% ${pos}%`;
         if(src){
           let source=el.querySelector("source");
           if(!source){source=document.createElement("source");el.appendChild(source);}
@@ -924,13 +939,44 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       });
       document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{const sm=el.querySelector("small"),st=el.querySelector("strong");if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;if(st)st.textContent=v.title||"Vídeo Arasigns";});
     });
-    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./V%C3%8DDEO%206.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.play().catch(()=>{});});
+    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{
+      const src=heroVideoData?.src||"./V%C3%8DDEO%206.mp4";
+      const pos=Number(videoPositions?.hero ?? 50);
+      el.style.objectPosition=`50% ${pos}%`;
+      const source=el.querySelector("source")||document.createElement("source");
+      if(!source.parentNode)el.appendChild(source);
+      if(source.getAttribute("src")!==src){source.src=src;el.load();}
+      el.muted=true;el.playsInline=true;el.play().catch(()=>{});
+    });
+  }
+  function renderAdminVideoPositions(){
+    const grid=document.getElementById("adminVideoPositionGrid");
+    if(!grid)return;
+    const items=[
+      {key:"hero",label:"Vídeo principal",desc:"Destaque da página inicial"},
+      {key:1,label:"Vídeo 01",desc:"Estrutura Arasigns"},
+      {key:2,label:"Vídeo 02",desc:"Nosso trabalho"},
+      {key:3,label:"Vídeo 03",desc:"Feito para aparecer"},
+      {key:4,label:"Vídeo 04",desc:"Precisão em cada detalhe"},
+      {key:5,label:"Vídeo 05",desc:"Mais um olhar da Arasigns"}
+    ];
+    grid.innerHTML=items.map(item=>{
+      const value=Math.max(0,Math.min(100,Number(videoPositions?.[item.key] ?? 50)));
+      return `<div class="admin-video-position-card"><strong>${item.label}</strong><small>${item.desc}</small><div class="admin-video-position-row"><input type="range" min="0" max="100" step="1" value="${value}" data-video-position="${item.key}"><span class="admin-video-position-value" id="videoPosValue_${item.key}">${value}%</span></div></div>`;
+    }).join("");
+    grid.querySelectorAll("[data-video-position]").forEach(input=>input.addEventListener("input",()=>{
+      const key=input.dataset.videoPosition;
+      videoPositions[key]=Number(input.value);
+      const out=document.getElementById(`videoPosValue_${key}`);if(out)out.textContent=`${input.value}%`;
+      applyVideoData();
+    }));
   }
   function renderAdminRows(){
     const body=document.getElementById("adminRows"); body.innerHTML="";
     Object.entries(prices).forEach(([key,p])=>{if(key==="outro"||key==="fachada")return;const tr=document.createElement("tr");tr.innerHTML=`<td>${p.label}</td><td><input type="number" step="0.01" data-rate="${key}" value="${p.rate}"></td><td><input type="number" step="0.01" data-min="${key}" value="${p.min}"></td>`;body.appendChild(tr);});
     renderAdminImages();
     renderAdminServices();
+    renderAdminVideoPositions();
   }
   /* ===== PONTE FIREBASE REALTIME DATABASE ===== */
   window.arasignsGetState=function(){
@@ -939,6 +985,7 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       siteImages: JSON.parse(JSON.stringify(siteImages)),
       team: JSON.parse(JSON.stringify(teamData)),
       serviceGalleries: JSON.parse(JSON.stringify(serviceGalleries)),
+      videoPositions: JSON.parse(JSON.stringify(videoPositions)),
     };
   };
   window.arasignsApplyState=function(remote){
@@ -947,10 +994,12 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
       if(remote.siteImages && typeof remote.siteImages==="object") siteImages={...siteImages,...remote.siteImages};
       if(Array.isArray(remote.team) && remote.team.length) teamData=remote.team;
       if(remote.serviceGalleries && typeof remote.serviceGalleries==="object") serviceGalleries=remote.serviceGalleries;
+      if(remote.videoPositions && typeof remote.videoPositions==="object") videoPositions={...defaultVideoPositions,...remote.videoPositions};
       localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));
       localStorage.setItem("arasigns_site_images_v22",JSON.stringify(siteImages));
       localStorage.setItem("arasigns_team_v30",JSON.stringify(teamData));
-      applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); calc(); applyVideoData();
+      localStorage.setItem("arasigns_video_positions_v1",JSON.stringify(videoPositions));
+      applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); renderAdminVideoPositions(); calc(); applyVideoData();
       if(document.getElementById("adminRows")) renderAdminRows();
     }catch(e){console.error("Erro ao aplicar dados do Firebase:",e);}
   };
@@ -968,13 +1017,13 @@ document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cf
     document.querySelectorAll("[data-min]").forEach(i=>{prices[i.dataset.min].min=parseFloat(i.value)||0;});
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
-    localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderAdminImages();calc();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
+    localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));localStorage.setItem("arasigns_video_positions_v1",JSON.stringify(videoPositions));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
+    applySiteImages();renderTeam();renderAdminImages();renderAdminVideoPositions();applyVideoData();calc();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
   adminOverlay?.addEventListener("click",e=>{if(e.target===adminOverlay)adminOverlay.classList.remove("open");});
-  applySiteImages();renderTeam();applyVideoData();
+  applySiteImages();renderTeam();renderAdminVideoPositions();applyVideoData();
   loadServiceGalleries().then(()=>{renderAdminServices();});
 })();
 </script>
