@@ -824,9 +824,7 @@ document.getElementById("modalCta").addEventListener("click",closeService);
           if(hint)hint.textContent="A estimativa usa largura × altura × preço configurado no ADM.";
           if(options){
             let html="";
-            if(qProduct==="pvc"){
-              html='<div class="q-option"><label>Espessura <span>material</span></label><select id="qFinish"><option>3 mm</option><option>5 mm</option><option>10 mm</option></select></div>';
-            }else if(qProduct==="banner"||qProduct==="lona"){
+            if(qProduct==="banner"||qProduct==="lona"){
               html='<div class="q-option"><label>Acabamento <span>finalização</span></label><select id="qFinish"><option>Ilhós</option><option>Bastão + corda</option><option>Sem acabamento</option></select></div>';
             }else{
               html="";
