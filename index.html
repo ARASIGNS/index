@@ -442,7 +442,7 @@ body:before{top:95px;left:-125px;width:460px;height:460px;opacity:.105;transform
 <header class="header" id="header"><a href="#inicio"><img alt="Arasigns" class="logo" src="./image-01.png"/></a><nav class="nav" id="nav"><a data-nav-target="inicio" href="#inicio">Início</a><a data-nav-target="videos" href="#videos">Vídeos</a><a data-nav-target="orcamento-express" href="#orcamento-express">Orçamento Express</a><a data-nav-target="sobre" href="#sobre">Quem somos</a><a data-nav-target="equipe" href="#equipe">Equipe</a><a data-nav-target="como-chegar" href="#como-chegar">Como chegar</a><a data-nav-target="contato" href="#contato">Contato</a></nav><a class="top-btn" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">SOLICITAR ORÇAMENTO ↗</a><button aria-label="Menu" class="menu" id="menu"><span></span><span></span></button></header>
 <main>
 <section class="hero" id="inicio"><div class="hero-copy reveal"><p class="eyebrow">COMUNICAÇÃO VISUAL DESDE 2003</p><h1>Sua marca<br/><em>vai com a</em><br/>Arasigns.</h1><p>Projetamos, produzimos e instalamos soluções de comunicação visual que fazem sua empresa ser vista, lembrada e reconhecida.</p><div class="actions"><a class="btn primary" href="#projetos">VER PROJETOS ↗</a><a class="btn secondary" href="https://wa.me/5516997931616?text=Olá%20Arasigns!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank">FALAR COM A GENTE</a></div><div class="hero-stats"><div class="stat"><strong>+20</strong><span>anos de mercado</span></div><div class="stat"><strong>+1.000</strong><span>projetos entregues</span></div><div class="stat"><strong>ARARAQUARA</strong><span>e toda a região</span></div></div></div><div class="hero-art reveal"><div class="hero-video-wrap"><video autoplay="" class="hero-photo hero-video" data-video-slot="hero" loop="" muted="" playsinline="" poster="./image-02.png" preload="metadata">
-<source src="./V%C3%8DDEO%206.mp4" type="video/mp4"/>
+<source src="./video-06.mp4" type="video/mp4"/>
 </video><button aria-label="Ativar áudio do vídeo" aria-pressed="false" class="hero-audio-btn" id="heroAudioBtn" type="button"><span id="heroAudioIcon">🔇</span></button></div><div class="floating-dot"></div><div class="hero-label"><small>PROJETO EM DESTAQUE</small><strong>Vai com Arasigns que é Mara!</strong></div></div></section>
 <section class="marquee"><div class="track"><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i><span>ADESIVOS</span><i>✦</i><span>VEÍCULOS</span><i>✦</i><span>ACM</span><i>✦</i><span>BANNERS</span><i>✦</i><span>FACHADAS</span><i>✦</i><span>LETRA CAIXA</span><i>✦</i><span>LUMINOSOS</span><i>✦</i></div></section>
 <section class="section video-showcase reveal" id="videos">
@@ -684,7 +684,41 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.con
 document.getElementById("modalCta").addEventListener("click",closeService);
 })();
 </script>
-<!-- ORÇAMENTO EXPRESS: lógica duplicada removida. A única fonte de verdade é o módulo ADMIN V30 abaixo. -->
+<script>(function(){const prices={banner:{label:"Banner",rate:55,min:45},lona:{label:"Lona impressa",rate:55,min:45},pvc:{label:"Placa de PVC",rate:95,min:70},adesivo:{label:"Adesivo impresso",rate:75,min:50},faixa:{label:"Faixa impressa",rate:48,min:40},outro:{label:"Outro projeto",rate:0,min:0}};let qProduct=null,qLat=null,qLng=null,qImageName="";const steps=[...document.querySelectorAll(".quote-step")],bars=[...document.querySelectorAll(".quote-progress span")];const money=v=>v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});function show(n){steps.forEach(x=>x.classList.toggle("active",x.dataset.step==n));bars.forEach((x,i)=>x.classList.toggle("active",i<n));document.getElementById("orcamento-express").scrollIntoView({behavior:"smooth",block:"start"})}function calc(){if(!qProduct||qProduct==="outro")return;let w=+document.getElementById("qWidth").value||0,h=+document.getElementById("qHeight").value||0,qty=Math.max(1,+document.getElementById("qQty").value||1),area=w*h,p=prices[qProduct],total=Math.max(area*p.rate*qty,p.min*qty);document.getElementById("qArea").textContent=area.toFixed(2).replace(".",",")+" m² × "+qty;document.getElementById("qPrice").textContent=money(total)}document.querySelectorAll(".quote-product").forEach(b=>b.onclick=()=>{qProduct=b.dataset.product;document.getElementById("quoteProductLabel").textContent=qProduct==="outro"?"Detalhes do projeto":"Medidas — "+prices[qProduct].label;if(qProduct==="outro"){document.getElementById("qPrice").textContent="A definir";document.getElementById("qArea").textContent="Projeto sob medida"}else calc();show(2)});document.querySelector(".quote-next").onclick=()=>{if(qProduct!=="outro"&&((+document.getElementById("qWidth").value||0)<=0||(+document.getElementById("qHeight").value||0)<=0)){alert("Informe largura e altura para calcular a estimativa.");return}show(3)};document.querySelectorAll(".quote-back").forEach(b=>b.onclick=()=>show(1));["qWidth","qHeight","qQty"].forEach(id=>document.getElementById(id).oninput=calc);const up=document.getElementById("quoteUpload"),file=document.getElementById("qImage"),prev=document.getElementById("qPreview");up.onclick=()=>file.click();file.onchange=()=>{let f=file.files[0];if(!f)return;qImageName=f.name;let r=new FileReader();r.onload=()=>{prev.src=r.result;up.classList.add("has-image")};r.readAsDataURL(f)};document.getElementById("qLocation").onclick=()=>{let st=document.getElementById("qLocationStatus");if(!navigator.geolocation){st.textContent="Seu navegador não permite localização automática.";return}st.textContent="Buscando sua localização…";navigator.geolocation.getCurrentPosition(p=>{qLat=p.coords.latitude;qLng=p.coords.longitude;st.textContent="Localização adicionada ✓"},()=>st.textContent="Não foi possível obter a localização. Informe cidade/bairro manualmente.",{enableHighAccuracy:true,timeout:10000})};document.getElementById("qSend").onclick=()=>{let name=document.getElementById("qName").value.trim(),city=document.getElementById("qCity").value.trim(),obs=document.getElementById("qObs").value.trim(),w=document.getElementById("qWidth").value,h=document.getElementById("qHeight").value,qty=document.getElementById("qQty").value;if(!name){alert("Coloque seu nome para encaminhar o orçamento.");return}let p=prices[qProduct]||prices.outro,area=(+w||0)*(+h||0),total=qProduct==="outro"?"A definir":money(Math.max(area*p.rate*qty,p.min*qty));let msg=`*ORÇAMENTO EXPRESS — ARASIGNS*
+
+*Cliente:* ${name}
+*Produto:* ${p.label}
+*Medidas:* ${w||"não informado"} m × ${h||"não informado"} m
+*Quantidade:* ${qty||"1"}
+*Área:* ${area?area.toFixed(2):"não informada"} m²
+*Estimativa:* ${total}
+*Cidade/Bairro:* ${city||"não informado"}`;if(qLat&&qLng)msg+=`
+*Localização:* https://www.google.com/maps?q=${qLat},${qLng}`;if(qImageName)msg+=`
+*Foto do local:* ${qImageName} (anexar no WhatsApp)`;if(obs)msg+=`
+*Observações:* ${obs}`;msg+=`
+
+_Valor sujeito à confirmação da equipe Arasigns._`;window.open("https://wa.me/5516997931616?text="+encodeURIComponent(msg),"_blank")}})();</script>
+<script>
+(function(){
+const KEY='arasigns_quote_config_v9';
+const defaultConfig={complexity:{"Simples":1,"Médio":1.15,"Complexo":1.35},products:{banner:{label:'Banner',desc:'Lona impressa com acabamento',model:'area',rate:55,min:45},lona:{label:'Lona impressa',desc:'Fachadas, eventos e painéis',model:'area',rate:55,min:45},pvc:{label:'Placa de PVC',desc:'Comunicação rígida personalizada',model:'area',rate:250,min:80},adesivo:{label:'Adesivo impresso',desc:'Vitrines, paredes e superfícies',model:'area',rate:75,min:50},faixa:{label:'Faixa impressa',desc:'Comunicação promocional',model:'area',rate:48,min:40},outro:{label:'Outro projeto',desc:'Fachada, letra caixa, luminoso...',model:'manual',rate:0,min:0}}};
+let cfg=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(defaultConfig), qProduct=null,qLat=null,qLng=null,qImageName='';
+const money=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const modal=document.getElementById('adminModal');
+function save(){localStorage.setItem(KEY,JSON.stringify(cfg))}
+function renderProducts(){const box=document.getElementById('quoteProducts');box.innerHTML=Object.entries(cfg.products).map(([k,p])=>`<button class="quote-product" data-product="${k}"><strong>${p.label}</strong><small>${p.desc}</small><i>↗</i></button>`).join('');box.querySelectorAll('.quote-product').forEach(b=>b.onclick=()=>selectProduct(b.dataset.product));}
+function selectProduct(k){qProduct=k;const p=cfg.products[k];document.getElementById('quoteProductLabel').textContent=p.label+' — medidas';document.getElementById('quoteRuleHint').textContent=p.model==='area'?'A estimativa usa largura × altura × preço configurado.':'Este projeto precisa de análise da equipe; use os campos para enviar o máximo de contexto.';document.getElementById('qPrice').textContent=p.model==='manual'?'A definir':'R$ 0,00';document.getElementById('qArea').textContent=p.model==='manual'?'Projeto sob medida':'0,00 m²';renderOptions(p);show(2);calc()}
+function renderOptions(p){const box=document.getElementById('qOptions');let html='';if(p.label.includes('PVC'))html+='<div class="q-option"><label>Espessura <span>material</span></label><select id="qFinish"><option>3 mm</option><option>5 mm</option><option>10 mm</option></select></div>';if(p.label.includes('Banner')||p.label.includes('Lona'))html+='<div class="q-option"><label>Acabamento <span>finalização</span></label><select id="qFinish"><option>Ilhós</option><option>Bastão + corda</option><option>Sem acabamento</option></select></div>';if(p.label.includes('Adesivo'))html+='<div class="q-option"><label>Aplicação <span>serviço</span></label><select id="qFinish"><option>Somente material</option><option>Com aplicação</option></select></div>';if(p.model==='manual')html+='<div class="q-option"><label>Complexidade <span>análise</span></label><select id="qComplexity">'+Object.keys(cfg.complexity).map(x=>`<option>${x}</option>`).join('')+'</select></div>';box.innerHTML=html;box.querySelectorAll('select').forEach(x=>x.onchange=calc)}
+function calc(){if(!qProduct)return;const p=cfg.products[qProduct],w=+document.getElementById('qWidth').value||0,h=+document.getElementById('qHeight').value||0,qty=Math.max(1,+document.getElementById('qQty').value||1),area=w*h;if(p.model==='manual'){document.getElementById('qPrice').textContent='A definir';document.getElementById('qArea').textContent=area?area.toFixed(2).replace('.',',')+' m²':'Projeto sob medida';return}let complexity=1;const c=document.getElementById('qComplexity');if(c)complexity=cfg.complexity[c.value]||1;let total=Math.max(area*p.rate*qty*complexity,p.min*qty*complexity);document.getElementById('qArea').textContent=area.toFixed(2).replace('.',',')+' m² × '+qty;document.getElementById('qPrice').textContent=money(total)}
+function show(n){document.querySelectorAll('.quote-step').forEach(x=>x.classList.toggle('active',x.dataset.step==n));document.querySelectorAll('.quote-progress span').forEach((x,i)=>x.classList.toggle('active',i<n));if(n===4)buildSummary();document.getElementById('orcamento-express').scrollIntoView({behavior:'smooth',block:'start'})}
+function buildSummary(){const p=cfg.products[qProduct]||cfg.products.outro,w=document.getElementById('qWidth').value||'—',h=document.getElementById('qHeight').value||'—',qty=document.getElementById('qQty').value||1;document.getElementById('qSummary').innerHTML=`<div class="summary-line"><b>Produto</b><span>${p.label}</span></div><div class="summary-line"><b>Medidas</b><span>${w} m × ${h} m</span></div><div class="summary-line"><b>Quantidade</b><span>${qty}</span></div><div class="summary-line"><b>Estimativa</b><span>${document.getElementById('qPrice').textContent}</span></div><div class="summary-line"><b>Cliente</b><span>${document.getElementById('qName').value||'Não informado'}</span></div><div class="summary-line"><b>Local</b><span>${document.getElementById('qCity').value||'Não informado'}</span></div>`}
+renderProducts();['qWidth','qHeight','qQty'].forEach(id=>document.getElementById(id).oninput=calc);document.querySelectorAll('.quote-back').forEach(b=>b.onclick=()=>show(+b.dataset.back));document.querySelectorAll('.quote-next').forEach(b=>b.onclick=()=>{const n=+b.dataset.next;if(n===3&&qProduct&&cfg.products[qProduct].model==='area'&&((+document.getElementById('qWidth').value||0)<=0||(+document.getElementById('qHeight').value||0)<=0)){alert('Informe largura e altura para calcular a estimativa.');return}if(n===4&&!document.getElementById('qName').value.trim()){alert('Coloque seu nome para revisar o pré-orçamento.');return}show(n)});
+const up=document.getElementById('quoteUpload'),file=document.getElementById('qImage'),prev=document.getElementById('qPreview');up.onclick=()=>file.click();file.onchange=()=>{const f=file.files[0];if(!f)return;qImageName=f.name;const r=new FileReader();r.onload=()=>{prev.src=r.result;up.classList.add('has-image')};r.readAsDataURL(f)};
+document.getElementById('qLocation').onclick=()=>{const st=document.getElementById('qLocationStatus');if(!navigator.geolocation){st.textContent='Seu navegador não permite localização automática.';return}st.textContent='Buscando sua localização…';navigator.geolocation.getCurrentPosition(p=>{qLat=p.coords.latitude;qLng=p.coords.longitude;st.textContent='Localização adicionada ✓'},()=>st.textContent='Não foi possível obter. Informe cidade/bairro manualmente.',{enableHighAccuracy:true,timeout:10000})};
+document.getElementById('qSend').onclick=()=>{const p=cfg.products[qProduct]||cfg.products.outro,name=document.getElementById('qName').value.trim(),city=document.getElementById('qCity').value.trim(),obs=document.getElementById('qObs').value.trim(),w=document.getElementById('qWidth').value||'não informado',h=document.getElementById('qHeight').value||'não informado',qty=document.getElementById('qQty').value||1;let msg=`*PRÉ-ORÇAMENTO EXPRESS — ARASIGNS*%0A%0A*Cliente:* ${encodeURIComponent(name)}%0A*Produto:* ${encodeURIComponent(p.label)}%0A*Medidas:* ${encodeURIComponent(w)} m x ${encodeURIComponent(h)} m%0A*Quantidade:* ${qty}%0A*Estimativa:* ${encodeURIComponent(document.getElementById('qPrice').textContent)}%0A*Local:* ${encodeURIComponent(city||'não informado')}`;if(qLat&&qLng)msg+=`%0A*Mapa:* https://www.google.com/maps?q=${qLat},${qLng}`;if(qImageName)msg+=`%0A*Foto do local:* ${encodeURIComponent(qImageName)} — anexar no WhatsApp`;if(obs)msg+=`%0A*Observações:* ${encodeURIComponent(obs)}`;msg+=`%0A%0A_Valor sujeito à análise e confirmação da equipe Arasigns._`;window.open('https://wa.me/5516997931616?text='+msg,'_blank')};
+// ADMIN: controlado pelo painel administrativo abaixo.
+})();
+</script>
 <div class="admin-access">
 <button id="openAdmin" type="button">admin</button>
 </div>
@@ -702,14 +736,12 @@ document.getElementById("modalCta").addEventListener("click",closeService);
 </div>
 </div>
 <div class="admin-panel" id="adminPanel">
-<h3>Configurações de preços</h3>
-<p>Estes são os valores que alimentam diretamente o Pré-Orçamento Express. Altere aqui — você não precisa editar o HTML. O cálculo usa <strong>área × R$/m² × quantidade</strong>, respeitando o <strong>valor mínimo por unidade</strong>.</p>
-<div class="admin-note" style="margin:12px 0 14px"><strong>IMPORTANTE:</strong> o acabamento do Banner (Ilhós, Bastão + corda ou Sem acabamento) é apenas uma informação do pedido e <strong>não altera o preço</strong>. O preço do Banner vem exclusivamente do R$/m² configurado abaixo.</div>
+<h3>Configurações</h3>
+<p>Altere os valores usados na estimativa inicial do Orçamento Express.</p>
 <table class="admin-table">
-<thead><tr><th>Produto</th><th>Preço por m²</th><th>Mínimo por unidade</th></tr></thead>
+<thead><tr><th>Produto</th><th>R$/m²</th><th>Mínimo</th></tr></thead>
 <tbody id="adminRows"></tbody>
 </table>
-<p class="admin-note" style="margin-top:12px">Depois de alterar qualquer valor, clique em <strong>SALVAR ALTERAÇÕES</strong>. O valor salvo passa a ser usado no cálculo e é enviado para a sincronização do Firebase.</p>
 <h4 class="admin-section-title">IMAGENS DO SITE</h4><p>Troque as imagens principais usando um arquivo do seu computador ou cole uma URL de imagem. As alterações ficam salvas neste navegador.</p><div class="admin-image-grid"><div class="admin-image-card"><strong>Fachada / Sobre</strong><div class="admin-preview" id="previewSiteFacade">Imagem atual</div><input id="imgSiteFacade" placeholder="URL da imagem (opcional)" type="text"/><input accept="image/*" id="fileSiteFacade" type="file"/></div><div class="admin-image-card"><strong>Logo principal</strong><div class="admin-preview" id="previewSiteLogo">Imagem atual</div><input id="imgSiteLogo" placeholder="URL da imagem (opcional)" type="text"/><input accept="image/*" id="fileSiteLogo" type="file"/></div></div><h4 class="admin-section-title">EQUIPE</h4><p>Cadastre cada funcionário: foto na bolinha, nome e a função que ficará logo abaixo da foto.</p><div class="admin-team-grid" id="adminTeamGrid"></div><div style="margin:10px 0 16px;padding:12px 14px;border:1px dashed #d9d9d9;border-radius:12px;font-size:10px;line-height:1.5;background:#fafafa"><strong>VÍDEOS:</strong> os vídeos não são mais alterados pelo ADM. Os 6 vídeos são gerenciados diretamente pelo GitHub. Para trocar algum, publique o arquivo com o mesmo nome no GitHub e ajuste apenas o nome no bloco <code>VÍDEOS DO SITE — GERENCIADOS DIRETAMENTE PELO GITHUB</code> do HTML.</div><h4 class="admin-section-title">AJUSTE VERTICAL DOS VÍDEOS</h4><div class="admin-video-positions" id="adminVideoPositions"><div class="admin-video-loading">Carregando controles dos vídeos…</div></div><p class="admin-note" style="margin-top:10px">Cada vídeo tem seu próprio ajuste. <strong>0%</strong> mostra o topo, <strong>50%</strong> centraliza e <strong>100%</strong> prioriza a parte de baixo. Ajuste quantos quiser e depois clique em <strong>SALVAR ALTERAÇÕES</strong> para sincronizar tudo pelo Firebase.</p><h4 class="admin-section-title">FOTOS DOS SERVIÇOS</h4><p>Adicione quantas fotos quiser a cada serviço. Quando o cliente clicar no card do serviço, essas fotos aparecerão na galeria.</p><div class="admin-service-grid" id="adminServiceGrid"></div>
 <button class="admin-save" id="adminSave">SALVAR ALTERAÇÕES</button>
 <p class="admin-note">Firebase ativo: alterações do ADM são sincronizadas entre os dispositivos pelo Realtime Database. Os vídeos são publicados diretamente pelo GitHub. O acesso do ADM continua usando o login definido neste HTML.</p>
@@ -741,7 +773,7 @@ document.getElementById("modalCta").addEventListener("click",closeService);
     {slot:4,src:"./video-04(1).mp4",eyebrow:"04 / PROCESSO",title:"Precisão em cada detalhe"},
     {slot:5,src:"./VIDEO%202.mp4",eyebrow:"05 / PRODUÇÃO",title:"Mais um olhar da Arasigns"}
   ];
-  const heroVideoData={src:"./V%C3%8DDEO%206.mp4",title:"Projeto em destaque"};
+  const heroVideoData={src:"./video-06.mp4",title:"Projeto em destaque"};
   /* POSIÇÃO VERTICAL DOS 6 VÍDEOS — 0 = topo | 50 = centro | 100 = baixo */
   const defaultVideoPositions={hero:50,1:50,2:50,3:50,4:50,5:50};
   let videoPositions={...defaultVideoPositions};
@@ -788,54 +820,6 @@ document.getElementById("modalCta").addEventListener("click",closeService);
     document.querySelectorAll(".application-btn").forEach(b=>b.classList.remove("selected"));
     const details=document.getElementById("applicationDetails");
     if(details) details.style.display="none";
-  }
-
-  /* ===== PRODUTOS DO PRÉ-ORÇAMENTO ===== */
-  function renderQuoteProducts(){
-    const box=document.getElementById("quoteProducts");
-    if(!box)return;
-    const list=Object.entries(prices).filter(([k])=>k!=="fachada");
-    box.innerHTML=list.map(([key,p])=>`<button class="quote-product" data-product="${key}" type="button">
-      <strong>${p.label}</strong>
-      <small>${key==="outro"?"Fachada, letra caixa, luminoso e outros projetos":"Estimativa por área — preço configurado no ADM"}</small>
-      <i>↗</i>
-    </button>`).join("");
-
-    box.querySelectorAll(".quote-product").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        qProduct=btn.dataset.product;
-        const p=prices[qProduct];
-        updateApplicationOption();
-
-        const label=document.getElementById("quoteProductLabel");
-        const hint=document.getElementById("quoteRuleHint");
-        const options=document.getElementById("qOptions");
-
-        if(qProduct==="outro"){
-          label.textContent="Detalhes do projeto";
-          if(hint)hint.textContent="Este projeto precisa de análise da equipe. Envie o máximo de informações possível.";
-          if(options)options.innerHTML="";
-          document.getElementById("qWidth").value="";
-          document.getElementById("qHeight").value="";
-          document.getElementById("qPrice").textContent="A definir";
-          document.getElementById("qArea").textContent="Projeto sob medida";
-        }else{
-          label.textContent="Medidas — "+p.label;
-          if(hint)hint.textContent="A estimativa usa largura × altura × preço configurado no ADM.";
-          if(options){
-            let html="";
-            if(qProduct==="banner"||qProduct==="lona"){
-              html='<div class="q-option"><label>Acabamento <span>finalização</span></label><select id="qFinish"><option>Ilhós</option><option>Bastão + corda</option><option>Sem acabamento</option></select></div>';
-            }else{
-              html="";
-            }
-            options.innerHTML=html;
-          }
-          calc();
-        }
-        showStep(2);
-      });
-    });
   }
 
   document.querySelectorAll(".quote-product").forEach(b=>b.addEventListener("click",()=>{
@@ -1027,7 +1011,7 @@ document.getElementById("modalCta").addEventListener("click",closeService);
       });
       document.querySelectorAll(`[data-video-caption-slot="${v.slot}"]`).forEach(el=>{const sm=el.querySelector("small"),st=el.querySelector("strong");if(sm)sm.textContent=v.eyebrow||`0${v.slot} / PRODUÇÃO`;if(st)st.textContent=v.title||"Vídeo Arasigns";});
     });
-    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./V%C3%8DDEO%206.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.style.objectPosition=`50% ${videoPositions.hero ?? 50}%`;el.play().catch(()=>{});});
+    document.querySelectorAll('[data-video-slot="hero"]').forEach(el=>{const src=heroVideoData?.src||"./video-06.mp4";let source=el.querySelector("source");if(!source){source=document.createElement("source");el.appendChild(source);}if(source.getAttribute("src")!==src){source.src=src;el.load();}el.muted=true;el.playsInline=true;el.style.objectPosition=`50% ${videoPositions.hero ?? 50}%`;el.play().catch(()=>{});});
   }
   function renderVideoPositionAdmin(){
     const wrap=document.getElementById("adminVideoPositions");
@@ -1082,7 +1066,7 @@ document.getElementById("modalCta").addEventListener("click",closeService);
       localStorage.setItem("arasigns_video_positions_v2",JSON.stringify(videoPositions));
       localStorage.setItem("arasigns_site_images_v22",JSON.stringify(siteImages));
       localStorage.setItem("arasigns_team_v30",JSON.stringify(teamData));
-      applySiteImages(); renderTeam(); renderQuoteProducts(); renderAdminImages(); renderAdminServices(); renderVideoPositionAdmin(); calc(); applyVideoData();
+      applySiteImages(); renderTeam(); renderAdminImages(); renderAdminServices(); renderVideoPositionAdmin(); calc(); applyVideoData();
       if(document.getElementById("adminRows")) renderAdminRows();
     }catch(e){console.error("Erro ao aplicar dados do Firebase:",e);}
   };
@@ -1096,17 +1080,17 @@ document.getElementById("modalCta").addEventListener("click",closeService);
     teamData.forEach((m,i)=>document.getElementById(`teamFile${i}`)?.addEventListener('change',e=>fileToData(e.target.files[0],data=>{teamData[i].image=data;renderAdminImages();})));
   }
   document.getElementById("adminSave")?.addEventListener("click",async()=>{
-    document.querySelectorAll("[data-rate]").forEach(i=>{const v=parseFloat(i.value);if(Number.isFinite(v)&&v>=0)prices[i.dataset.rate].rate=v;});
-    document.querySelectorAll("[data-min]").forEach(i=>{const v=parseFloat(i.value);if(Number.isFinite(v)&&v>=0)prices[i.dataset.min].min=v;});
+    document.querySelectorAll("[data-rate]").forEach(i=>{prices[i.dataset.rate].rate=parseFloat(i.value)||0;});
+    document.querySelectorAll("[data-min]").forEach(i=>{prices[i.dataset.min].min=parseFloat(i.value)||0;});
     const f=document.getElementById('imgSiteFacade').value.trim(), l=document.getElementById('imgSiteLogo').value.trim(); if(f)siteImages.facade=f;if(l)siteImages.logo=l;
     teamData=teamData.map((m,i)=>({...m,name:document.getElementById(`teamName${i}`)?.value.trim()||m.name,role:document.getElementById(`teamRole${i}`)?.value.trim()||m.role,bio:document.getElementById(`teamBio${i}`)?.value.trim()||''}));
     localStorage.setItem("arasigns_prices_v9",JSON.stringify(prices));localStorage.setItem('arasigns_site_images_v22',JSON.stringify(siteImages));localStorage.setItem('arasigns_team_v30',JSON.stringify(teamData));localStorage.setItem("arasigns_video_positions_v2",JSON.stringify(videoPositions));/* galerias de serviços são persistidas via IndexedDB; não usar localStorage para fotos */
-    applySiteImages();renderTeam();renderQuoteProducts();renderAdminImages();renderVideoPositionAdmin();calc();applyVideoData();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
+    applySiteImages();renderTeam();renderAdminImages();renderVideoPositionAdmin();calc();applyVideoData();await window.firebaseSaveSiteState?.();alert("Alterações salvas e sincronizadas. ✓");
   });
   teamData.forEach((m,i)=>{});
   document.getElementById("adminLogout")?.addEventListener("click",()=>{adminPanel.classList.remove("open");adminLogin.style.display="block";adminOverlay.classList.remove("open");});
   adminOverlay?.addEventListener("click",e=>{if(e.target===adminOverlay)adminOverlay.classList.remove("open");});
-  applySiteImages();renderTeam();renderQuoteProducts();renderVideoPositionAdmin();applyVideoData();
+  applySiteImages();renderTeam();renderVideoPositionAdmin();applyVideoData();
   loadServiceGalleries().then(()=>{renderAdminServices();});
 })();
 </script>
